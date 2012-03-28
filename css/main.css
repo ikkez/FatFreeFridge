@@ -1,0 +1,83 @@
+/* font config */
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+body,p,input,button,select,textarea, .navbar-search .search-query {
+    font-family: 'Droid+Sans', sans-serif;
+}
+
+/* bootstrap override */
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+td.center { 
+	text-align: center;
+}
+
+
+/* app styles */
+
+.hero-unit {
+    margin-top: 100px;
+    padding-bottom: 10px;
+    padding-right: 250px;
+    padding-top: 15px;
+    position: relative;
+}
+	.hero-unit h1 {
+	    color: inherit;
+	    font-size: 45px;
+	    letter-spacing: -1px;
+	    line-height: 1;
+	    margin-bottom: 0;
+	    margin-top: -50px;
+	    position: absolute;
+	}
+	.hero-unit img.logo {
+		position: absolute;
+		right: 40px;
+		bottom: 5px;
+	}
+	@media (min-width: 768px) and (max-width: 979px) { 
+		.hero-unit {
+			padding-right: 50px;			
+		}
+	  	.hero-unit img.logo {
+	  		float: right;
+	  		position: static;
+	  	}
+	}
+	@media (max-width: 768px) {
+		.hero-unit {
+			padding-right: 50px;			
+		}
+		.hero-unit img.logo {
+			position: static;
+		}
+	}
+
+.package {
+    margin-bottom: 20px;
+}
+
+	.package div {
+	    margin-bottom: 10px;
+	}
+		h3 span {
+		    font-size: 13px;
+		    color: #777;
+		}
+			
+	.jcopy {
+		margin-left: 10px;
+	}
+	.zclip {
+		margin-top: -3px;
+	}
+		.zclip embed {
+			float: left;
+		}

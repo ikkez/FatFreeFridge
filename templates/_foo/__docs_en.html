@@ -1,0 +1,166 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav" id="sideNav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Core Pack</li>
+                    <li class="active"><a href="#">Hive</a></li>
+                    <li><a href="#">Encoding</a></li>
+                    <li><a href="#">Routing</a></li>
+                    <li><a href="#">Form Validation</a></li>
+                    <li><a href="#">AJAX Usage</a></li>
+                    <li class="nav-header">SQL Handler</li>
+                    <li><a href="#">Setup DB</a></li>
+                    <li><a href="#">Query DB</a></li>
+                    <li class="nav-header">Data Mappers</li>
+                    <li><a href="#">Axon</a></li>
+                    <li><a href="#">Jig</a></li>
+                    <li><a href="#">M2</a></li>
+                    <li class="nav-header">Template</li>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">...</a></li>
+                    <li class="nav-header">Misc</li>
+                    <li><a href="#">Web</a></li>
+                    <li><a href="#">Google</a></li>
+                    <li><a href="#">Auth</a></li>
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h1>Documentation</h1>
+                    <p>This Documentation gives you a quick reference about all classes and methods that comes with the basic framework package.</p>
+                    <hr />
+
+                    <div class="package">
+                        <h2>Hive</h2>
+                        <div>
+                            <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [<span>bool = FALSE</span> persist], [<span>bool = TRUE</span> resolve] ); <span>void</span></h3>
+                            <p>Bind value to framework variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::get( <span>string</span> key, [<span>mixed = NULL</span> arguments] ); <span>mixed</span></h3>
+                            <p>Retrieve value of framework variable and apply locale rules</p>
+                        </div>
+                        <div>
+                            <h3>F3::clear( <span>string</span> key ); <span>void</span></h3>
+                            <p>Unset framework variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::exists( <span>string</span> key ); <span>bool</span></h3>
+                            <p>Return TRUE if framework variable has been assigned a value</p>
+                        </div>
+                        <div>
+                            <h3>F3::mset( <span>array</span> argument, [<span>string</span> prefix] ); <span>void</span></h3>
+                            <p>Multi-variable assignment using associative array</p>
+                        </div>
+                        <div>
+                            <h3>F3::cached( <span>string</span> key ); <span>bool</span></h3>
+                            <p>Determine if framework variable has been cached</p>
+                        </div>
+                    </div>
+                    <div class="package">
+                        <h2>Encoding</h2>
+                        <div>
+                            <h3>F3::htmlencode( <span>string</span> string, [<span>bool = FALSE</span> all]); <span>string</span></h3>
+                            <p>Convert special characters to HTML entities using globally-defined character set</p>
+                        </div>
+                        <div>
+                            <h3>F3::htmldecode( <span>string</span> string, [<span>bool = FALSE</span> all]); <span>string</span></h3>
+                            <p>Convert HTML entities back to their equivalent characters</p>
+                        </div>
+                    </div>
+                    <div class="package">
+                        <h2>Routing</h2>
+                        <div>
+                            <h3>F3::status( <span>string</span> code ); <span>false | string</span></h3>
+                            <p>Send HTTP status header. Return text equivalent of status code</p>
+                        </div>
+                        <div>
+                            <h3>F3::headers(); <span>array</span></h3>
+                            <p>Retrieve HTTP headers</p>
+                        </div>
+                        <div>
+                            <h3>F3::expire([<span>int = 0</span> secs]); <span>void</span></h3>
+                            <p>Send HTTP header with expiration date (seconds from current time)</p>
+                        </div>
+                        <div>
+                            <h3>F3::reroute(<span>string</span> uri); <span>void</span></h3>
+                            <p>Reroute to specified URI</p>
+                        </div>
+                        <div>
+                            <h3>F3::route(<span>string</span> pattern, <span>mixed</span> funcs,[<span>int = 0</span> ttl],[<span>int = 0</span> throttle],[<span>bool = TRUE</span> hotlink]); <span>void</span></h3>
+                            <p>Assign handler to route pattern</p>
+                        </div>
+                        <div>
+                            <h3>F3::map(<span>string</span> url,<span>string</span> class,[<span>int = 0</span> ttl],[<span>int = 0</span> throttle],[<span>bool = TRUE</span> hotlink]); <span>void</span></h3>
+                            <p>Provide REST interface by mapping URL to object/class</p>
+                        </div>
+                        <div>
+                            <h3>F3::call(<span>string</span> funcs,[<span>bool = FALSE</span> listen]); <span>mixed</span></h3>
+                            <p>Call route handler</p>
+                        </div>
+                        <div>
+                            <h3>F3::run(); <span>void</span></h3>
+                            <p>Process routes based on incoming URI</p>
+                        </div>                        
+                        <div>
+                            <h3>F3::mock(<span>string</span> pattern,[<span>array = NULL</span> args]); <span>void</span></h3>
+                            <p>Mock environment for command-line use and/or unit testing</p>
+                        </div>
+                        
+                    </div>
+                    <div class="package">
+                        <h2>Validation</h2>
+                        <div>
+                            <h3>F3::scrub( <span>string</span> input,[<span>string</span> tags]); <span>string</span></h3>
+                            <p>Remove HTML tags (except those enumerated) to protect against XSS/code injection attacks</p>
+                        </div>
+                        <div>
+                            <h3>F3::input(<span>string</span> fields,<span>mixed</span> funcs,[<span>string = NULL</span> tags],[<span>int</span> filter],[<span>array</span> opt],[<span>bool = TRUE</span> assign]); <span>void</span></h3>
+                            <p>Remove HTML tags (except those enumerated) to protect against XSS/code injection attacks</p>
+                            <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <em>print_r(filter_list());</em></p>
+                            <p>The <em>ops</em> argument describes options, used by the filter, if that filter supports options.</p>
+                        </div>
+                    </div>
+                    <div class="package">
+                        <h2>Misc</h2>
+                        <div>
+                            <h3>F3::config( <span>string</span> file ); <span>void</span></h3>
+                            <p>Configure framework according to INI-style file settings Cache auto-generated PHP code to speed up execution</p>
+                        </div>
+                        <div>
+                            <h3>F3::send( <span>string</span> file, [<span>int = 0</span> kbps],[<span>bool = TRUE</span> partial]); <span>bool</span></h3>
+                            <p>Transmit a file for downloading by HTTP client; If kilobytes per second is specified, output is throttled (bandwidth will not be controlled by default); Return TRUE if successful, FALSE otherwise; Support for partial downloads is indicated by third argument</p>
+                        </div>
+                        <div>
+                            <h3>F3::render( <span>string</span> file); <span>string</span></h3> 
+                            <p>Render user interface</p>
+                        </div>
+                        <div>
+                            <h3>F3::profile( <span>string</span> file); <span>array</span></h3>
+                            <p>Return runtime performance analytics</p>
+                            <p>It contains information about memory usage, elapsed time and caching.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+    <hr>
+
+    <footer>
+        <p>&copy; F3-Junkies 2012</p>
+    </footer>
+
+</div>
+<!--/.fluid-container-->
