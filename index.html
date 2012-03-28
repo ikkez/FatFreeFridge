@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{@page.title}}</title>
+    <title>Home | Fat-Free Fridge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="F3-Junkies">
-    <link href="{{@BASE}}/{{@UI,@CSS}}bootstrap.css" rel="stylesheet">
-    <link href="{{@BASE}}/{{@UI,@CSS}}main.css" rel="stylesheet">
-    <link href="{{@BASE}}/{{@UI,@CSS}}bootstrap-responsive.css" rel="stylesheet">
-    <base href="http://www.ikkez.de/fatfreefridge/" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,6 +23,8 @@
 
 <body>
 
+<a href="https://github.com/ikkez/FatFreeFridge"><img style="position: absolute; z-index: 1200; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -33,12 +34,13 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="#">Fat-Free Fridge</a>
-            <div class="nav-collapse">
+            <div class="nav-collapse">                
                 <ul class="nav">
-                    <repeat group="{{@menu}}" key="{{@nav}}" value="{{@title}}">
-                        <li {{(F3::get('PARAMS.page') == @nav)?'class="active"':''}}><a href="{{@nav}}/">{{@title}}</a></li>
-                    </repeat>
-                </ul>
+					<li class="active"><a href="index.html">Home</a></li>
+					<li ><a href="examples_en.html">Examples</a></li>
+					<li ><a href="docs_en.html">Documentation</a></li>
+					<li ><a href="plugins_en.html">Plugins</a></li>
+				</ul>
             </div>
         </div>
     </div>
@@ -48,10 +50,10 @@
     <div class="row">
         <div class="span12">
             <div class="hero-unit">
-                <h1>Get a fresh kickstart</h1>
-                <img src="{{@UI,@IMG}}fatfreefridge_logo.png" class="logo" />
+                <h1>get a fresh kickstart</h1>
+                <img src="img/fatfreefridge_logo.png" class="logo" />
                 <p>for your next great thing, build on the glorious <a href="http://fatfree.sourceforge.net/" target="_blank">PHP Fat-Free Framework.</a><br />
-                This is going to be a huge wiki, glossar, snippet base and community. Hopefully multilingual.<br/>This Site is currently driven by the {{ @VERSION }} and Twitter bootstrap.</p>
+                This is going to be a huge wiki, glossar, snippet base and community. Hopefully multilingual.</p>
                 <p><a class="btn btn-primary btn-large" id="heromore" title="Contribute!" data-content="To complete this userguide, we would appreciate your help." href="#" rel="popover">Learn more &raquo;</a></p>
             </div>
             <div class="row">
@@ -62,7 +64,7 @@
                         mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
                         magna mollis euismod. Donec sed odio dui. </p>
 
-                    <p><a class="btn" href="examples/">View details &raquo;</a></p>
+                    <p><a class="btn" href="examples_en.html">View details &raquo;</a></p>
                 </div>
                 <!--/span-->
                 <div class="span4">
@@ -72,7 +74,7 @@
                         mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
                         magna mollis euismod. Donec sed odio dui. </p>
 
-                    <p><a class="btn" href="docs/">View details &raquo;</a></p>
+                    <p><a class="btn" href="docs_en.html">View details &raquo;</a></p>
                 </div>
                 <!--/span-->
                 <div class="span4">
@@ -82,11 +84,14 @@
                         mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
                         magna mollis euismod. Donec sed odio dui. </p>
 
-                    <p><a class="btn" href="plugins/">View details &raquo;</a></p>
+                    <p><a class="btn" href="plugins_en.html">View details &raquo;</a></p>
                 </div>
                 <!--/span-->
             </div>
-            <!--/row-->            
+            <!--/row-->  
+            <div class="row">   
+			</div>
+            <!--/row-->         
         </div>
         <!--/span-->
     </div>
@@ -105,9 +110,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{@UI,@JS}}jquery-1.7.1.min.js"><\/script>')</script>
-<script src="{{@UI,@JS}}bootstrap.min.js"></script>
-<script src="{{@BASE}}/{{@UI,@JS}}main.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
