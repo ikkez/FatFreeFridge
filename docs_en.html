@@ -86,6 +86,24 @@
                         <div>
                             <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [<span>bool = FALSE</span> persist], [<span>bool = TRUE</span> resolve] ); <span>void</span></h3>
                             <p>Bind value to framework variable</p>
+							<button class="btn btn-mini btn-info">view details</button>
+							<div class="hidden">
+								<p>setting framework variables</p>
+								<pre>
+	F3::set('var',value);
+	F3::set('colors',array('red','blue','yellow'));
+	F3::set('a',123); // a=123
+	F3::set('b','c'); // b='c'
+	F3::set('c','whatever'); // c='whatever'
+	F3::set('{{@b}}','wherever'); // c='wherever'
+	F3::set('{{@b}}','{{@a+1}}'); // c='124'
+	F3::set('{{@b}}',F3::get('a')+1); // c=124
+	F3::set('hash',array('x'=>1,'y'=>2,'z'=>3));
+	F3::set('hash.x',1);
+	F3::set('hash.y',2);
+	F3::set('hash.z',3);
+								</pre>
+							</div>
                         </div>
                         <div>
                             <h3>F3::get( <span>string</span> key, [<span>mixed = NULL</span> arguments] ); <span>mixed</span></h3>
@@ -215,10 +233,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{@BASE}}/{{@UI,@JS}}jquery-1.7.1.min.js"><\/script>')</script>
-<script src="{{@BASE}}/{{@UI,@JS}}bootstrap.min.js"></script>
-<script src="{{@BASE}}/{{@UI,@JS}}jquery.zclip.min.js"></script>
-<script src="{{@BASE}}/{{@UI,@JS}}main.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
