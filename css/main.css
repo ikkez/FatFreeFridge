@@ -67,6 +67,10 @@ td.center {
 	.package div {
 	    margin-bottom: 10px;
 	}
+	.package div.hidden {
+		padding-top: 10px;
+		overflow: hidden;
+	}
 		h3 span {
 		    font-size: 13px;
 		    color: #777;
