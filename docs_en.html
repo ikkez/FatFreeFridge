@@ -118,7 +118,7 @@ F3::set('{{@b}}',F3::get('a')+1); 	// c=124
 F3::set('color','green');
 F3::set('car','this car is {{@color}}.'); // car='this car is green.'
 </pre>
-								<div class="alert alert-info"><strong>Notive:</strong> changing `color` afterwards, wont affect `car`,	as it gets resolved and saved to var on setting it.</div>
+								<div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,	as it gets resolved and saved to var on setting it.</div>
 							</div>
                         </div>
                         <div>
@@ -252,6 +252,10 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <h3>F3::profile( <span>string</span> file); <span>array</span></h3>
                             <p>Return runtime performance analytics</p>
                             <p>It contains information about memory usage, elapsed time and caching.</p>
+                        </div>
+                        <div>
+                            <h3>F3::expect( <span>bool</span> cond, [<span>string</span> pass],[<span>string</span> fail]); <span>string</span></h3>
+                            <p>Perform test and append result to TEST global variable</p>
                         </div>
                     </div>
                     
