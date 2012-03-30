@@ -38,10 +38,8 @@ $(document).ready(function() {
 	*******************/    
 	$('.btn-info').toggle(function(){
 		$(this).next('div.hidden').css({visibility: 'visible'}).slideDown();
-		$(this).text('hide details');
 	},function(){
 		$(this).next('div.hidden').slideUp();
-		$(this).text('view details');
 	});
 	
 });
