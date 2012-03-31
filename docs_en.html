@@ -238,6 +238,22 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <p>Transmit a file for downloading by HTTP client; If kilobytes per second is specified, output is throttled (bandwidth will not be controlled by default); Return TRUE if successful, FALSE otherwise; Support for partial downloads is indicated by third argument</p>
                         </div>
                     </div>
+                    <div class="package" id="debug">
+                        <h2>Debug</h2>
+                        <div>
+                            <h3>F3::profile( <span>string</span> file); <span>array</span></h3>
+                            <p>Return runtime performance analytics</p>
+                            <p>It contains information about memory usage, elapsed time and caching.</p>
+                        </div>
+                        <div>
+                            <h3>F3::expect( <span>bool</span> cond, [<span>string</span> pass],[<span>string</span> fail]); <span>string</span></h3>
+                            <p>Perform test and append result to TEST global variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::error(<span>int</span> code, [<span>string</span> str],[<span>array</span> trace],[<span>bool = FALSE</span> fatal]); <span>void</span></h3>
+                            <p>Display default error page; Use custom page if found</p>
+                        </div>
+                    </div>
                     <div class="package" id="misc">
                         <h2>Misc</h2>
                         <div>
@@ -249,13 +265,24 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <p>Render user interface</p>
                         </div>
                         <div>
-                            <h3>F3::profile( <span>string</span> file); <span>array</span></h3>
-                            <p>Return runtime performance analytics</p>
-                            <p>It contains information about memory usage, elapsed time and caching.</p>
+                            <h3>F3::start(); <span>void</span></h3> 
+                            <p>Bootstrap code</p>
                         </div>
                         <div>
-                            <h3>F3::expect( <span>bool</span> cond, [<span>string</span> pass],[<span>string</span> fail]); <span>string</span></h3>
-                            <p>Perform test and append result to TEST global variable</p>
+                            <h3>F3::stop(); <span>void</span></h3> 
+                            <p>Execute shutdown function</p>
+                        </div>
+                        <div>
+                            <h3>F3::loadstatic(<span>string</span> class); <span>void</span></h3> 
+                            <p>onLoad event handler (static class initializer)</p>
+                        </div>
+                        <div>
+                            <h3>F3::autoload(<span>string</span> class); <span>void</span></h3> 
+                            <p>Intercept instantiation of objects in undefined classes</p>
+                        </div>
+                        <div>
+                            <h3>F3::__callStatic(<span>string</span> func, <span>array</span> args); <span>mixed</span></h3> 
+                            <p>Intercept calls to undefined static methods and proxy for the called class if found in the plugins folder</p>
                         </div>
                     </div>
                     
