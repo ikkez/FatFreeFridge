@@ -55,4 +55,7 @@ $(document).ready(function() {
 		},
 	});
 	
+	
+	prettyPrint();
+	
 });

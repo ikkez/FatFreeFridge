@@ -9,10 +9,11 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+    <!--[ if lt IE 9 ]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <![ endif ]-->
 
     <!-- fav and touch icons -->
     <!--<link rel="shortcut icon" href="../assets/ico/favicon.ico">
@@ -90,54 +91,54 @@
                     <div class="package" id="hive">
                         <h2>Hive</h2>
                         <div>
-                            <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [<span>bool = FALSE</span> persist], [<span>bool = TRUE</span> resolve] ); <span>void</span></h3>
+                            <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [ <span>bool = FALSE</span> persist ], [ <span>bool = TRUE</span> resolve ]); <span>void</span></h3>
                             <p>Bind value to framework variable</p>
 							<button class="btn btn-mini btn-info">view details</button>
 							<div class="hidden">
 								<p>setting framework variables</p>
-<pre>
-F3::set('a',123); // a=123
-F3::set('b','c'); // b='c'
-F3::set('c','whatever'); // c='whatever'
-F3::set('d',TRUE); // d=TRUE
+<pre class="prettyprint linenums">
+F3::set( 'a',123 ); // a=123
+F3::set( 'b','c' ); // b='c'
+F3::set( 'c','whatever' ); // c='whatever'
+F3::set( 'd',TRUE ); // d=TRUE
 </pre>
 								<p>setting arrays</p>
-<pre>
-F3::set('hash',array('x'=>1,'y'=>2,'z'=>3));
+<pre class="prettyprint linenums">
+F3::set( 'hash',array( 'x'=>1,'y'=>2,'z'=>3 ) );
 
 // dot notation is also possible
-F3::set('hash.x',1);
-F3::set('hash.y',2);
-F3::set('hash.z',3);
+F3::set( 'hash.x',1 );
+F3::set( 'hash.y',2 );
+F3::set( 'hash.z',3 );
 </pre>
 								<p>If the <strong>persist</strong> parameter is TRUE, the var is going to be cached.</p>
 								<div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
 								<p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
-<pre>
-F3::set('{{@b}}','wherever'); 		// c='wherever'
-F3::set('{{@b}}','{{@a+1}}'); 		// c='124'
-F3::set('{{@b}}',F3::get('a')+1); 	// c=124
+<pre class="prettyprint linenums">
+F3::set( '{{@b}}','wherever' ); 		// c='wherever'
+F3::set( '{{@b}}','{{@a+1}}' ); 		// c='124'
+F3::set( '{{@b}}',F3::get( 'a' )+1 ); 	// c=124
 
-F3::set('color','green');
-F3::set('car','this car is {{@color}}.'); // car='this car is green.'
+F3::set( 'color','green' );
+F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
 </pre>
 								<div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,	as it gets resolved and saved to var on setting it.</div>
 							</div>
                         </div>
                         <div>
-                            <h3>F3::get( <span>string</span> key, [<span>mixed = NULL</span> arguments] ); <span>mixed</span></h3>
+                            <h3>F3::get( <span>string</span> key, [ <span>mixed = NULL</span> arguments ]); <span>mixed</span></h3>
                             <p>Retrieve value of framework variable and apply locale rules</p>
                             <button class="btn btn-mini btn-info">view details</button>
                             <div class="hidden">
                             	<p>to get a previously saved framework var use:</p>
-<pre>
-F3::get('c'); // [string] = 'whatever'
+<pre class="prettyprint linenums">
+F3::get( 'c' ); // [ string ] = 'whatever'
 </pre>
                            	<p>you can also resolve other vars</p>
-<pre>
-F3::set('foo','bar');
-F3::set('bar','nice');
-F3::get('{{@foo}}'); // returns: nice
+<pre class="prettyprint linenums">
+F3::set( 'foo','bar' );
+F3::set( 'bar','nice' );
+F3::get( '{{@foo}}' ); // returns: nice
 </pre>
                             </div>
                         </div>
@@ -146,36 +147,202 @@ F3::get('{{@foo}}'); // returns: nice
                             <p>Unset framework variable</p>
                             <button class="btn btn-mini btn-info">view details</button>
                             <div class="hidden">
-                            	<p>You can clear any framwork var like this:</p>
-<pre>
-F3::clear('foobar');
-F3::clear('SESSION'); // destroys the SESSION
-F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
+                            	<p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
+<pre class="prettyprint linenums">
+F3::clear( 'foobar' );
+F3::clear( 'myArray.param1' ); // removes key `param1` from array `myArray`
+F3::clear( 'SESSION' ); // destroys the user SESSION
 </pre>
                             </div>
                         </div>
                         <div>
                             <h3>F3::exists( <span>string</span> key ); <span>bool</span></h3>
                             <p>Return TRUE if framework variable has been assigned a value</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            	<p>To find out if a variable has been previously defined:</p>
+<pre class="prettyprint linenums">
+F3::set('foo','var');
+F3::set('var',1234);
+
+F3::exists('var'); // true
+F3::exists('{{@foo}}'); // true
+F3::exists('bar'); // false
+</pre>                                
+                            </div>
                         </div>
                         <div>
-                            <h3>F3::mset( <span>array</span> argument, [<span>string</span> prefix] ); <span>void</span></h3>
+                            <h3>F3::valid( <span>string</span> key ); <span>bool</span></h3>
+                            <p>Return TRUE if specified string is a valid framework variable name</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            	<p>Usage:</p>
+<pre class="prettyprint linenums">
+F3::valid('var'); // true
+F3::valid('var-1'); // error
+F3::valid('*as'); // error
+F3::valid('Gemüse'); // error
+</pre>                            
+                            </div>
+                        </div>
+                        <div>
+                            <h3>F3::mset( <span>array</span> argument, [ <span>string</span> prefix ]); <span>void</span></h3>
                             <p>Multi-variable assignment using associative array</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            	<p>With a key=>value paired associative array you can define multiple vars.</p>
+<pre class="prettyprint linenums">
+F3::mset(array(
+    'var1'=>'value1',
+    'var2'=>'value2',
+    'var3'=>'value3',
+));
+
+F3::get('var1'); // value1
+F3::get('var2'); // value2
+F3::get('var3'); // value3
+</pre> 
+                            	<p>Using the <strong>prefix</strong> argument, you can append all key names.</p>
+<pre class="prettyprint linenums">
+F3::mset(array(
+    'var1'=>'value1',
+    'var2'=>'value2',
+    'var3'=>'value3',
+),
+'pre_');
+
+F3::get('pre_var1'); // value1
+F3::get('pre_var2'); // value2
+F3::get('pre_var3'); // value3
+</pre>                       
+							</div>     
                         </div>
                         <div>
                             <h3>F3::cached( <span>string</span> key ); <span>bool</span></h3>
                             <p>Determine if framework variable has been cached</p>
                         </div>
+                        <div>
+                            <h3>F3::csv( <span>mixed</span> args ); <span>string</span></h3>
+                            <p>Flatten array values and return as CSV string</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+<pre class="prettyprint linenums">
+$data = array('value1','value2','value3');
+F3::csv($data); // returns: 'value1','value2','value3'
+</pre>   
+							<div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not excaped automatically. Values containing a ' have to be excaped before.</div>                   
+							</div>   
+                        </div>
+                        <div>
+                            <h3>F3::split( <span>string</span> str ); <span>array</span></h3>
+                            <p>Split pipe-, semi-colon, comma-separated string</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+<pre class="prettyprint linenums">
+$data = 'value1,value2;value3|value4';
+var_dump(F3::split($data));
+
+// output:
+
+array(4) {
+  [0]=>
+  string(6) "value1"
+  [1]=>
+  string(6) "value2"
+  [2]=>
+  string(6) "value3"
+  [3]=>
+  string(6) "value4"
+}
+</pre>                      
+							</div>
+                        </div>
+                        <div>
+                            <h3>F3::sign( <span>mixed</span> num ); <span>int</span></h3>
+                            <p>Returns -1 if the specified number is negative, 0 if zero, or 1 if the number is positive</p>
+                        </div>
+                        <div>
+                            <h3>F3::&ref( <span>string</span> key, [ <span>bool = TRUE</span> ]); <span>mixed</span></h3>
+                            <p>Get framework variable reference/contents</p>
+                        </div>
+                        <div>
+                            <h3>F3::copy( <span>string</span> src, <span>string</span> dst ); <span>void</span></h3>
+                            <p>Copy contents of framework variable to another</p>
+                        </div>
+                        <div>
+                            <h3>F3::concat( <span>string</span> var, <span>string</span> val ); <span>void</span></h3>
+                            <p>Concatenate string to framework string variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::sprintf(); <span>string</span></h3>
+                            <p>Format framework string variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::append( <span>string</span> var, <span>string</span> key, <span>mixed</span> val ); <span>void</span></h3>
+                            <p>Add keyed element to the end of framework array variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::flip( <span>string</span> var ); <span>void</span></h3>
+                            <p>Swap keys and values of framework array variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::merge(); <span>void</span></h3>
+                            <p>Merge one or more framework array variables</p>
+                        </div>
+                        <div>
+                            <h3>F3::push( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
+                            <p>Add element to the end of framework array variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::pop( <span>string</span> var ); <span>mixed</span></h3>
+                            <p>Remove last element of framework array variable and return the element</p>
+                        </div>
+                        <div>
+                            <h3>F3::unshift( <span>string</span> var, <span>mixed</span> val ); <span></span></h3>
+                            <p>Add element to the beginning of framework array variable</p>
+                        </div>
+                        <div>
+                            <h3>F3::shift( <span>string</span> var ); <span>mixed</span></h3>
+                            <p>Remove first element of framework array variable and return the element</p>
+                        </div>
                     </div>
                     <div class="package" id="encoding">
-                        <h2>Encoding</h2>
+                        <h2>Encoding &amp; Conversion</h2>
                         <div>
-                            <h3>F3::htmlencode( <span>string</span> string, [<span>bool = FALSE</span> all]); <span>string</span></h3>
+                            <h3>F3::htmlencode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert special characters to HTML entities using globally-defined character set</p>
                         </div>
                         <div>
-                            <h3>F3::htmldecode( <span>string</span> string, [<span>bool = FALSE</span> all]); <span>string</span></h3>
+                            <h3>F3::htmldecode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert HTML entities back to their equivalent characters</p>
+                        </div>
+                    	<div>
+                            <h3>F3::fixslashes( <span>string</span> str ); <span>string</span></h3>
+                            <p>Convert Windows double-backslashes to slashes; Also for referencing namespaced classes in subdirectories</p>
+                        </div>
+                        <div>
+                            <h3>F3::stringify( <span>mixed</span> arg ); <span>string</span></h3>
+                            <p>Convert PHP expression/value to compressed exportable string</p>
+                        </div>
+                        <div>
+                            <h3>F3::hash( <span>string</span> str ); <span>string</span></h3>
+                            <p>Generate Base36/CRC32 hash code</p>
+                        </div>
+                        <div>
+                            <h3>F3::hexbin( <span>string</span> hex ); <span>string</span></h3>
+                            <p>Convert hexadecimal to binary-packed data</p>
+                        </div>
+                        <div>
+                            <h3>F3::binhex( <span>string</span> bin ); <span>string</span></h3>
+                            <p>Convert binary-packed data to hexadecimal</p>
+                        </div>
+                        <div>
+                            <h3>F3::bytes( <span>string</span> str ); <span>int</span></h3>
+                            <p>Convert engineering-notated string to bytes</p>
+                        </div>
+                        <div>
+                            <h3>F3::remix( <span>string</span> key ); <span>string</span></h3>
+                            <p>Convert from JS dot notation to PHP array notation</p>
                         </div>
                     </div>
                     <div class="package" id="routing">
@@ -189,23 +356,23 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <p>Retrieve HTTP headers</p>
                         </div>
                         <div>
-                            <h3>F3::expire([<span>int = 0</span> secs]); <span>void</span></h3>
-                            <p>Send HTTP header with expiration date (seconds from current time)</p>
+                            <h3>F3::expire([ <span>int = 0</span> secs ]); <span>void</span></h3>
+                            <p>Send HTTP header with expiration date ( seconds from current time )</p>
                         </div>
                         <div>
-                            <h3>F3::reroute(<span>string</span> uri); <span>void</span></h3>
+                            <h3>F3::reroute( <span>string</span> uri ); <span>void</span></h3>
                             <p>Reroute to specified URI</p>
                         </div>
                         <div>
-                            <h3>F3::route(<span>string</span> pattern, <span>mixed</span> funcs,[<span>int = 0</span> ttl],[<span>int = 0</span> throttle],[<span>bool = TRUE</span> hotlink]); <span>void</span></h3>
+                            <h3>F3::route( <span>string</span> pattern, <span>mixed</span> funcs, [ <span>int = 0</span> ttl ], [ <span>int = 0</span> throttle ], [ <span>bool = TRUE</span> hotlink ]); <span>void</span></h3>
                             <p>Assign handler to route pattern</p>
                         </div>
                         <div>
-                            <h3>F3::map(<span>string</span> url,<span>string</span> class,[<span>int = 0</span> ttl],[<span>int = 0</span> throttle],[<span>bool = TRUE</span> hotlink]); <span>void</span></h3>
+                            <h3>F3::map( <span>string</span> url, <span>string</span> class, [ <span>int = 0</span> ttl ], [ <span>int = 0</span> throttle ], [ <span>bool = TRUE</span> hotlink ]); <span>void</span></h3>
                             <p>Provide REST interface by mapping URL to object/class</p>
                         </div>
                         <div>
-                            <h3>F3::call(<span>string</span> funcs,[<span>bool = FALSE</span> listen]); <span>mixed</span></h3>
+                            <h3>F3::call( <span>string</span> funcs, [ <span>bool = FALSE</span> listen ]); <span>mixed</span></h3>
                             <p>Call route handler</p>
                         </div>
                         <div>
@@ -217,55 +384,104 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                     <div class="package" id="validation">
                         <h2>Validation</h2>
                         <div>
-                            <h3>F3::scrub( <span>string</span> input,[<span>string</span> tags]); <span>string</span></h3>
-                            <p>Remove HTML tags (except those enumerated) to protect against XSS/code injection attacks</p>
+                            <h3>F3::scrub( <span>string</span> input, [ <span>string</span> tags ]); <span>string</span></h3>
+                            <p>Remove HTML tags ( except those enumerated ) to protect against XSS/code injection attacks</p>
                         </div>
                         <div>
-                            <h3>F3::input(<span>string</span> fields,<span>mixed</span> funcs,[<span>string = NULL</span> tags],[<span>int</span> filter],[<span>array</span> opt],[<span>bool = TRUE</span> assign]); <span>void</span></h3>
+                            <h3>F3::input( <span>string</span> fields, <span>mixed</span> funcs, [ <span>string = NULL</span> tags ], [ <span>int</span> filter ], [ <span>array</span> opt ], [ <span>bool = TRUE</span> assign ]); <span>void</span></h3>
                             <p>Call form field handler</p>
                             <button class="btn btn-mini btn-info">view details</button>
                             <div class="hidden">
-	                            <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r(filter_list());</code></p>
+	                            <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r( filter_list() );</code></p>
 	                            <p>The <strong>ops</strong> argument describes options, used by the filter, if that filter supports options.</p>
                             </div>
                         </div>
                     </div>
                     <div class="package" id="file">
-                        <h2>File</h2>
+                        <h2>File System</h2>
                         <div>
-                            <h3>F3::send( <span>string</span> file, [<span>int = 0</span> kbps],[<span>bool = TRUE</span> partial]); <span>bool</span></h3>
-                            <p>Transmit a file for downloading by HTTP client; If kilobytes per second is specified, output is throttled (bandwidth will not be controlled by default); Return TRUE if successful, FALSE otherwise; Support for partial downloads is indicated by third argument</p>
+                            <h3>F3::send( <span>string</span> file, [ <span>int = 0</span> kbps ], [ <span>bool = TRUE</span> partial ]); <span>bool</span></h3>
+                            <p>Transmit a file for downloading by HTTP client; If kilobytes per second is specified, output is throttled ( bandwidth will not be controlled by default ); Return TRUE if successful, FALSE otherwise; Support for partial downloads is indicated by third argument</p>
+                        </div>
+                        <div>
+                            <h3>F3::getfile( <span>string</span> file ); <span>string</span></h3>
+                            <p>Lock-aware file reader</p>
+                        </div>
+                        <div>
+                            <h3>F3::putfile( <span>string</span> file, <span>string</span> data ); <span>mixed</span></h3>
+                            <p>Lock-aware file writer. Returns number of bytes written or false.</p>                            
+                        </div>
+                        <div>
+                            <h3>F3::mkdir( <span>string</span> name, <span>int = 0775</span> perm ); <span></span></h3>
+                            <p>Create folder; Trigger error and return FALSE if script has no permission to create folder in the specified path</p>
                         </div>
                     </div>
                     <div class="package" id="debug">
                         <h2>Debug</h2>
                         <div>
-                            <h3>F3::profile( <span>string</span> file); <span>array</span></h3>
+                            <h3>F3::profile( <span>string</span> file ); <span>array</span></h3>
                             <p>Return runtime performance analytics</p>
                             <p>It contains information about memory usage, elapsed time and caching.</p>
                         </div>
                         <div>
-                            <h3>F3::expect( <span>bool</span> cond, [<span>string</span> pass],[<span>string</span> fail]); <span>string</span></h3>
+                            <h3>F3::expect( <span>bool</span> cond, [ <span>string</span> pass ], [ <span>string</span> fail ]); <span>string</span></h3>
                             <p>Perform test and append result to TEST global variable</p>
                         </div>
                         <div>
-                            <h3>F3::error(<span>int</span> code, [<span>string</span> str],[<span>array</span> trace],[<span>bool = FALSE</span> fatal]); <span>void</span></h3>
+                            <h3>F3::error( <span>int</span> code, [ <span>string</span> str ], [ <span>array</span> trace ], [ <span>bool = FALSE</span> fatal ]); <span>void</span></h3>
                             <p>Display default error page; Use custom page if found</p>
                         </div>
                         <div>
-                            <h3>F3::mock(<span>string</span> pattern,[<span>array = NULL</span> args]); <span>void</span></h3>
+                            <h3>F3::mock( <span>string</span> pattern, [ <span>array = NULL</span> args ]); <span>void</span></h3>
                             <p>Mock environment for command-line use and/or unit testing. It simulates an incoming HTTP request for a URL.</p>
                         </div>
                     </div>
                     <div class="package" id="misc">
                         <h2>Misc</h2>
+                        <div class="internal">
+                            <h3>F3::autoload( <span>string</span> class ); <span>void</span></h3> 
+                            <p>Intercept instantiation of objects in undefined classes</p>
+                            <div class="alert alert-info">
+                            	<strong>Internal!</strong> You probably never need this method.
+                            </div>
+                        </div>
                         <div>
                             <h3>F3::config( <span>string</span> file ); <span>void</span></h3>
                             <p>Configure framework according to INI-style file settings Cache auto-generated PHP code to speed up execution</p>
                         </div>
                         <div>
-                            <h3>F3::render( <span>string</span> file); <span>string</span></h3> 
+                            <h3>F3::mutex(); <span>mixed</span></h3>
+                            <p>Execute callback as a <strong>mut</strong>ual <strong>ex</strong>clusion operation.</p>
+                        </div>
+                        <div class="internal">
+                            <h3>F3::instance(); <span>object</span></h3>
+                            <p>Return instance of child class</p>
+                            <div class="alert alert-info">
+                            	<strong>Internal!</strong> You probably never need this method.
+                            </div>
+                        </div>
+                        <div class="internal">
+                            <h3>F3::loadstatic( <span>string</span> class ); <span>void</span></h3> 
+                            <p>onLoad event handler ( static class initializer )</p>
+                            <div class="alert alert-info">
+                            	<strong>Internal!</strong> You probably never need this method.
+                            </div>
+                        </div>
+                        <div>
+                            <h3>F3::realip(); <span>string</span></h3>
+                            <p>Sniff headers for real IP address</p>
+                        </div>
+                        <div>
+                            <h3>F3::render( <span>string</span> file ); <span>string</span></h3> 
                             <p>Render user interface</p>
+                        </div>
+                        <div>
+                            <h3>F3::resolve( <span>mixed</span> val ); <span>string</span></h3>
+                            <p>Evaluate template expressions in string</p>
+                        </div>
+                        <div>
+                            <h3>F3::privateip([ <span>string</span> addr ]); <span>bool</span></h3>
+                            <p>Return TRUE if IP address is local or within a private IPv4 range</p>
                         </div>
                         <div>
                             <h3>F3::start(); <span>void</span></h3> 
@@ -274,20 +490,10 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                         <div>
                             <h3>F3::stop(); <span>void</span></h3> 
                             <p>Execute shutdown function</p>
-                        </div>
-                        <div class="internal">
-                            <h3>F3::loadstatic(<span>string</span> class); <span>void</span></h3> 
-                            <p>onLoad event handler (static class initializer)</p>
-                            <div class="alert alert-info">
-                            	<strong>Internal!</strong> You probably never need this method.
-                            </div>
-                        </div>
-                        <div class="internal">
-                            <h3>F3::autoload(<span>string</span> class); <span>void</span></h3> 
-                            <p>Intercept instantiation of objects in undefined classes</p>
-                            <div class="alert alert-info">
-                            	<strong>Internal!</strong> You probably never need this method.
-                            </div>
+                        </div>	
+                        <div>
+                            <h3>F3::tidy( <span>string</span> html ); <span>string</span></h3>
+                            <p>Clean and repair HTML</p>
                         </div>
                     </div>
                     
@@ -313,9 +519,10 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write( '<script src="js/jquery-1.7.1.min.js"><\/script>' )</script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.quicksearch.js"></script>
+<script src="js/google-code-prettify/prettify.js"></script>
 <script src="js/main.js"></script>
 
 </body>

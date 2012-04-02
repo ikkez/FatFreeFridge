@@ -23,6 +23,10 @@ td.center {
 	padding-top: 5px;
 }
 
+.btn:focus {
+	outline: none;
+}
+
 /* app styles */
 
 .hero-unit {
@@ -75,7 +79,7 @@ td.center {
 	    border-radius: 5px;
 	}
 	.package > div.internal {
-		background: #fafafa;		
+		background: #f8f8f8;		
 	}
 	.package > div.internal .alert {
 		margin-bottom: 0;
@@ -98,3 +102,23 @@ td.center {
 		.zclip embed {
 			float: left;
 		}
+		
+	ol.linenums li {
+		color: #BEBEC5 !important;
+		line-height: 18px;
+		text-shadow: 0 1px 0 #FFFFFF;
+		list-style:decimal;
+	}	
+	.prettyprint.linenums {
+    box-shadow: 40px 0 0 #FBFBFC inset, 41px 0 0 #ECECF0 inset;
+	}
+	prettify.css (Zeile 15)
+	pre.prettyprint {
+		margin-bottom: 18px;
+	}
+	bootstrap.css (Zeile 560)
+	.prettyprint {
+		background-color: #F7F7F9;
+		border: 1px solid #E1E1E8;
+		padding: 8px;
+	}
