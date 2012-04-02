@@ -44,4 +44,15 @@ $(document).ready(function() {
 		$(this).text('view details');
 	});
 	
+	/* SearchBox
+	*******************/   
+	$('#search-query').quicksearch('.package h3', {
+		'show': function () {
+			$(this).parent().show();
+		},
+		'hide': function () {
+			$(this).parent().hide();
+		},
+	});
+	
 });

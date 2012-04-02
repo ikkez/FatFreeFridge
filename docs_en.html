@@ -41,6 +41,9 @@
 					<li class="active" ><a href="docs_en.html">Documentation</a></li>
 					<li ><a href="plugins_en.html">Plugins</a></li>
 				</ul>
+				<form id="nav-search" action="" class="form-search">
+				  <input type="text" spellcheck="false" autocomplete="off" name="q" placeholder="Search" id="search-query" class="search-input" />				  	
+				</form>
             </div>
         </div>
     </div>
@@ -208,10 +211,6 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                         <div>
                             <h3>F3::run(); <span>void</span></h3>
                             <p>Process routes based on incoming URI</p>
-                        </div>                        
-                        <div>
-                            <h3>F3::mock(<span>string</span> pattern,[<span>array = NULL</span> args]); <span>void</span></h3>
-                            <p>Mock environment for command-line use and/or unit testing</p>
                         </div>
                         
                     </div>
@@ -223,7 +222,7 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                         </div>
                         <div>
                             <h3>F3::input(<span>string</span> fields,<span>mixed</span> funcs,[<span>string = NULL</span> tags],[<span>int</span> filter],[<span>array</span> opt],[<span>bool = TRUE</span> assign]); <span>void</span></h3>
-                            <p>Remove HTML tags (except those enumerated) to protect against XSS/code injection attacks</p>
+                            <p>Call form field handler</p>
                             <button class="btn btn-mini btn-info">view details</button>
                             <div class="hidden">
 	                            <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r(filter_list());</code></p>
@@ -253,6 +252,10 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <h3>F3::error(<span>int</span> code, [<span>string</span> str],[<span>array</span> trace],[<span>bool = FALSE</span> fatal]); <span>void</span></h3>
                             <p>Display default error page; Use custom page if found</p>
                         </div>
+                        <div>
+                            <h3>F3::mock(<span>string</span> pattern,[<span>array = NULL</span> args]); <span>void</span></h3>
+                            <p>Mock environment for command-line use and/or unit testing. It simulates an incoming HTTP request for a URL.</p>
+                        </div>
                     </div>
                     <div class="package" id="misc">
                         <h2>Misc</h2>
@@ -272,17 +275,19 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
                             <h3>F3::stop(); <span>void</span></h3> 
                             <p>Execute shutdown function</p>
                         </div>
-                        <div>
+                        <div class="internal">
                             <h3>F3::loadstatic(<span>string</span> class); <span>void</span></h3> 
                             <p>onLoad event handler (static class initializer)</p>
+                            <div class="alert alert-info">
+                            	<strong>Internal!</strong> You probably never need this method.
+                            </div>
                         </div>
-                        <div>
+                        <div class="internal">
                             <h3>F3::autoload(<span>string</span> class); <span>void</span></h3> 
                             <p>Intercept instantiation of objects in undefined classes</p>
-                        </div>
-                        <div>
-                            <h3>F3::__callStatic(<span>string</span> func, <span>array</span> args); <span>mixed</span></h3> 
-                            <p>Intercept calls to undefined static methods and proxy for the called class if found in the plugins folder</p>
+                            <div class="alert alert-info">
+                            	<strong>Internal!</strong> You probably never need this method.
+                            </div>
                         </div>
                     </div>
                     
@@ -310,6 +315,7 @@ F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.quicksearch.js"></script>
 <script src="js/main.js"></script>
 
 </body>
