@@ -98,10 +98,10 @@
 							<div class="hidden">
 								<p>setting framework variables</p>
 <pre class="prettyprint linenums">
-F3::set( 'a',123 ); // a=123
-F3::set( 'b','c' ); // b='c'
-F3::set( 'c','whatever' ); // c='whatever'
-F3::set( 'd',TRUE ); // d=TRUE
+F3::set( 'a',123 ); // a=123, integer
+F3::set( 'b','c' ); // b='c', string
+F3::set( 'c','whatever' ); // c='whatever', string
+F3::set( 'd',TRUE ); // d=TRUE, boolean
 </pre>
 								<p>setting arrays</p>
 <pre class="prettyprint linenums">
@@ -133,6 +133,7 @@ F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
                             <div class="hidden">
                             	<p>to get a previously saved framework var use:</p>
 <pre class="prettyprint linenums">
+F3::set( 'c','whatever' );
 F3::get( 'c' ); // [ string ] = 'whatever'
 </pre>
                            	<p>you can also resolve other vars</p>
@@ -231,7 +232,7 @@ F3::get('pre_var3'); // value3
 $data = array('value1','value2','value3');
 F3::csv($data); // returns: 'value1','value2','value3'
 </pre>   
-							<div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not excaped automatically. Values containing a ' have to be excaped before.</div>                   
+							<div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not escaped automatically. Values containing a ' has to be escaped before.</div>                   
 							</div>   
                         </div>
                         <div>
