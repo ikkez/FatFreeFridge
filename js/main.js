@@ -45,17 +45,19 @@ $(document).ready(function() {
 	});
 	
 	/* SearchBox
-	*******************/   
-	$('#search-query').quicksearch('.package h3', {
-		'show': function () {
-			$(this).parent().show();
-		},
-		'hide': function () {
-			$(this).parent().hide();
-		},
-	});
+	*******************/  
+	if($('#search-query').length != 0) { 
+		$('#search-query').quicksearch('.package h3', {
+			'show': function () {
+				$(this).parent().show();
+			},
+			'hide': function () {
+				$(this).parent().hide();
+			},
+		});
+	}
 	
-	
+	// enable code highlighting
 	prettyPrint();
 	
 });
