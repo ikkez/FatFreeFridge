@@ -24,8 +24,6 @@
 
 <body>
 
-<a href="https://github.com/ikkez/FatFreeFridge"><img style="position: absolute; z-index: 1200; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
@@ -242,20 +240,17 @@ F3::csv($data); // returns: 'value1','value2','value3'
                             <div class="hidden">
 <pre class="prettyprint linenums">
 $data = 'value1,value2;value3|value4';
-var_dump(F3::split($data));
+print_r(F3::split($data));
 
-// output:
-
-array(4) {
-  [0]=>
-  string(6) "value1"
-  [1]=>
-  string(6) "value2"
-  [2]=>
-  string(6) "value3"
-  [3]=>
-  string(6) "value4"
-}
+/* output:
+Array
+(
+    [0] => value1
+    [1] => value2
+    [2] => value3
+    [3] => value4
+)
+*/
 </pre>                      
 							</div>
                         </div>
@@ -274,26 +269,154 @@ array(4) {
                         <div>
                             <h3>F3::concat( <span>string</span> var, <span>string</span> val ); <span>void</span></h3>
                             <p>Concatenate string to framework string variable</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            <p>Usage:</p>
+<pre class="prettyprint linenums">
+F3::set('var','hello');
+F3::concat('var',' world');
+
+echo F3::get('var'); // output: hello world
+</pre> 
+                            </div>
                         </div>
                         <div>
                             <h3>F3::sprintf(); <span>string</span></h3>
                             <p>Format framework string variable</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            <p>Usage:</p>
+<pre class="prettyprint linenums">
+$count = 5;
+$location = 'tree';
+$format = 'There are %d apes on the %s.';
+echo F3::sprintf($format, $count, $location); // There are 5 apes on the tree.
+</pre>
+                            </div>
                         </div>
                         <div>
                             <h3>F3::append( <span>string</span> var, <span>string</span> key, <span>mixed</span> val ); <span>void</span></h3>
-                            <p>Add keyed element to the end of framework array variable</p>
+                            <p>Add keyed element to the end of framework array variable</p>                            
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            <p>Usage:</p>
+<pre class="prettyprint linenums">
+$stock = array('apple'=>12,'cherry'=>4,'banana'=>8);
+F3::set('fruits',$stock);
+F3::set('pineapple',3);
+F3::append('fruits','peach',20);
+
+print_r(F3::get('fruits'));
+/* output:
+Array
+    (
+        [apple] => 12
+        [cherry] => 4
+        [banana] => 8
+        [peach] => 20
+    )
+*/
+</pre>
+							<p>You can also resolve other vars within the arguments, to easily switch the processed data, without changing code.</p>
+<pre class="prettyprint linenums">
+F3::set('stock','fruits');
+F3::set('newFruit','pineapple');
+F3::append('{{@stock}}','{{@newFruit}}',20);
+
+print_r(F3::get('{{@stock}}'));
+/* output:
+Array
+    (
+        [apple] => 12
+        [cherry] => 4
+        [banana] => 8
+        [peach] => 20
+        [pineapple] => 20
+    )
+*/
+</pre>
+                            </div>
                         </div>
                         <div>
                             <h3>F3::flip( <span>string</span> var ); <span>void</span></h3>
                             <p>Swap keys and values of framework array variable</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            <p>Usage:</p>
+<pre class="prettyprint linenums">
+F3::set('data',array(
+    'foo1'=>'bar1',
+    'foo2'=>'bar2',
+    'foo3'=>'bar3',
+));
+F3::flip('data');
+
+print_r(F3::get('data'));
+/* output:
+Array
+(
+    [bar1] => foo1
+    [bar2] => foo2
+    [bar3] => foo3
+)
+*/
+</pre>
+                            </div>
                         </div>
                         <div>
                             <h3>F3::merge(); <span>void</span></h3>
                             <p>Merge one or more framework array variables</p>
+                            <button class="btn btn-mini btn-info">view details</button>
+                            <div class="hidden">
+                            <p>Usage:</p>
+<pre class="prettyprint linenums">
+F3::set('data1',array(
+    'foo1'=>'bar1',
+    'foo2'=>'bar2',
+));
+F3::set('data2',array(
+    'foo3'=>'bar3',
+));
+print_r(F3::merge(F3::get('data1'),'data2',array('foo4'=>'bar4')));
+/* output:
+Array
+(
+    [foo1] => bar1
+    [foo2] => bar2
+    [foo3] => bar3
+    [foo4] => bar4
+)
+*/
+</pre>
+                            </div>
                         </div>
                         <div>
                             <h3>F3::push( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
-                            <p>Add element to the end of framework array variable</p>
+	                        <p>Add element to the end of framework array variable</p>
+	                        <button class="btn btn-mini btn-info">view details</button>
+	                        <div class="hidden">
+	                        <p>Usage:</p>
+<pre class="prettyprint linenums">
+F3::set('data1',array(
+    'bar1',
+    'bar2',
+    'bar3',
+));
+
+F3::push('data1','bar4');
+
+print_r(F3::get('data1')); 
+/* output:
+Array
+(
+    [0] => bar1
+    [1] => bar2
+    [2] => bar3
+    [3] => bar4
+)
+*/
+</pre>
+                        	</div>                           
                         </div>
                         <div>
                             <h3>F3::pop( <span>string</span> var ); <span>mixed</span></h3>
