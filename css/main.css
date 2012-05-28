@@ -84,7 +84,7 @@ td.center {
 	.package > div.internal .alert {
 		margin-bottom: 0;
 	}
-	.package div.hidden {
+	.package div.collapse {
 		padding-top: 10px;
 		overflow: hidden;
 	}

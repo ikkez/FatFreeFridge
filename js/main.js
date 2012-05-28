@@ -35,14 +35,13 @@ $(document).ready(function() {
 	   
 	
 	/* Hidden Sections
-	*******************/    
-	$('.btn-info').toggle(function(){
-		$(this).next('div.hidden').css({visibility: 'visible'}).slideDown();
-		$(this).text('hide details');
-	},function(){
-		$(this).next('div.hidden').slideUp();
-		$(this).text('view details');
+	*******************/    		
+	$(".collapse").collapse().on('show',function(){
+		$(this).prev('button.more').text('hide details');			
+	}).on('hide',function(){
+		$(this).prev('button.more').text('view details');		
 	});
+	
 	
 	/* SearchBox
 	*******************/  
