@@ -88,7 +88,7 @@ $app->set('DEBUG', 3); // get all debug infos; to turn off use 0 (zero)
 $app->set('GUI', 'ui/'); // path for templates
 $app->set('DB', new DB('mysql:host=localhost;port=3306;dbname=mysqldb', 'admin', 'p455w0rD')); // global db connection
 
-$app->route('GET /', 'controller\main->start'); // route for our root path
+$app->route('GET /', 'main->start'); // route for our root path
 
 $app->run(); // without this, the whole page won't be displayed
 </pre>
@@ -127,7 +127,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L,QSA]
 </pre>
-								<p>This is the core path of F3's <a href="./docs_en.html#routing">routing engine</a>. As you may recognize. This is no PHP or HTML code. 
+								<p>This is the core part of F3's <a href="./docs_en.html#routing">routing engine</a>. As you may recognize. This is no PHP or HTML code. 
 									You have to put this into your <em>.htaccess</em> file in your application folder. <strong>Don't forget to modify RewriteBase</strong></p>
 								<p>E.g. your app is on <em>http://example.org/myf3app</em>, than you have to modify your .htaccess the following way:</p>
 <pre class="prettyprint linenums">
