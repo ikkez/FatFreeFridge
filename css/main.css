@@ -14,7 +14,7 @@ body {
   padding: 9px 0;
 }
 
-td.center { 
+td.center {
 	text-align: center;
 }
 
@@ -50,9 +50,9 @@ td.center {
 		right: 40px;
 		bottom: 5px;
 	}
-	@media (min-width: 768px) and (max-width: 979px) { 
+	@media (min-width: 768px) and (max-width: 979px) {
 		.hero-unit {
-			padding-right: 50px;			
+			padding-right: 50px;
 		}
 	  	.hero-unit img.logo {
 	  		float: right;
@@ -61,7 +61,7 @@ td.center {
 	}
 	@media (max-width: 768px) {
 		.hero-unit {
-			padding-right: 50px;			
+			padding-right: 50px;
 		}
 		.hero-unit img.logo {
 			position: static;
@@ -79,7 +79,7 @@ td.center {
 	    border-radius: 5px;
 	}
 	.package > div.internal {
-		background: #f8f8f8;		
+		background: #f8f8f8;
 	}
 	.package > div.internal .alert {
 		margin-bottom: 0;
@@ -92,7 +92,7 @@ td.center {
 		    font-size: 13px;
 		    color: #777;
 		}
-			
+
 	.jcopy {
 		margin-left: 10px;
 	}
@@ -102,8 +102,8 @@ td.center {
 		.zclip embed {
 			float: left;
 		}
-		
-		
+
+
 /* code prettify */
 
 .prettyprint.linenums {
