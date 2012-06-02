@@ -1,15 +1,15 @@
 $(document).ready(function() {
 
-	// copy text	
-	/*$('.package h3').each(function(){		
-		$jcopyimg = $('<img class="jcopy" src="ui/img/jcopy.png" />');	
-		$(this).append($jcopyimg);	
+	// copy text
+	/*$('.package h3').each(function(){
+		$jcopyimg = $('<img class="jcopy" src="ui/img/jcopy.png" />');
+		$(this).append($jcopyimg);
 		$(this).find('.jcopy').zclip({
 			path:'ui/inc/ZeroClipboard.swf',
 			copy:$(this).text()
 		});
 	});*/
-	
+
 	/* PopOver
 	***********/
 	$("a[rel=popover]")
@@ -17,8 +17,8 @@ $(document).ready(function() {
 	  .click(function(e) {
 	    e.preventDefault()
 	  });
-	  
-	
+
+
 	/* Smoothscroll
 	****************/
 	$('a[href*=#]').click(function() {
@@ -32,21 +32,21 @@ $(document).ready(function() {
 		   }
 		}
 	});
-	   
-	
+
+
 	/* Hidden Sections
-	*******************/    		
+	*******************/
 	$(".collapse").collapse().on('show',function(){
-		$(this).prev('button.more').text('hide details');			
+		$(this).prev('button.more').text('hide details');
 	}).on('hide',function(){
-		$(this).prev('button.more').text('view details');		
+		$(this).prev('button.more').text('view details');
 	});
-	
-	
+
+
 	/* SearchBox
-	*******************/  
-	if($('#search-query').length != 0) { 
-		$('#search-query').quicksearch('.package h3', {
+	*******************/
+	if($('#search-query').length != 0 && $('.package h3').length != 0) {
+		$('#search-query').show().quicksearch('.package h3', {
 			'show': function () {
 				$(this).parent().show();
 			},
@@ -55,8 +55,8 @@ $(document).ready(function() {
 			},
 		});
 	}
-	
+
 	// enable code highlighting
 	prettyPrint();
-	
+
 });

@@ -1,54 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Documentation | Fat-Free Fridge</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="F3-Junkies">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[ if lt IE 9 ]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![ endif ]-->
-
-    <!-- fav and touch icons -->
-    <!--<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-</head>
-
-<body>
-
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Fat-Free Fridge</a>
-            <div class="nav-collapse">                
-                <ul class="nav">
-					<li><a href="index.html">Home</a></li>
-					<li ><a href="examples_en.html">Examples</a></li>
-					<li class="active" ><a href="docs_en.html">Documentation</a></li>
-					<li ><a href="plugins_en.html">Plugins</a></li>
-				</ul>
-				<form id="nav-search" action="" class="form-search">
-				  <input type="text" spellcheck="false" autocomplete="off" name="q" placeholder="Search" id="search-query" class="search-input" />				  	
-				</form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
+---
+layout: default
+title: Documentation
+---
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
@@ -92,16 +45,16 @@
                         <div id="set">
                             <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [ <span>bool = FALSE</span> persist ], [ <span>bool = TRUE</span> resolve ]); <span>void</span></h3>
                             <p>Bind value to framework variable</p>
-							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#set .collapse">view details</button>
-							<div class="collapse in">
-								<p>setting framework variables</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#set .collapse">view details</button>
+                            <div class="collapse in">
+                                <p>setting framework variables</p>
 <pre class="prettyprint linenums">
 F3::set( 'a',123 ); // a=123, integer
 F3::set( 'b','c' ); // b='c', string
 F3::set( 'c','whatever' ); // c='whatever', string
 F3::set( 'd',TRUE ); // d=TRUE, boolean
 </pre>
-								<p>setting arrays</p>
+                                <p>setting arrays</p>
 <pre class="prettyprint linenums">
 F3::set( 'hash',array( 'x'=>1,'y'=>2,'z'=>3 ) );
 
@@ -110,31 +63,31 @@ F3::set( 'hash.x',1 );
 F3::set( 'hash.y',2 );
 F3::set( 'hash.z',3 );
 </pre>
-								<p>If the <strong>persist</strong> parameter is TRUE, the var is going to be cached.</p>
-								<div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
-								<p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
+                                <p>If the <strong>persist</strong> parameter is TRUE, the var is going to be cached.</p>
+                                <div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
+                                <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
 <pre class="prettyprint linenums">
-F3::set( '{{@b}}','wherever' ); 		// c='wherever'
-F3::set( '{{@b}}','{{@a+1}}' ); 		// c='124'
-F3::set( '{{@b}}',F3::get( 'a' )+1 ); 	// c=124
+F3::set( '{{@b}}','wherever' );         // c='wherever'
+F3::set( '{{@b}}','{{@a+1}}' );         // c='124'
+F3::set( '{{@b}}',F3::get( 'a' )+1 );     // c=124
 
 F3::set( 'color','green' );
 F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
 </pre>
-								<div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,	as it gets resolved and saved to var on setting it.</div>
-							</div>
+                                <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,    as it gets resolved and saved to var on setting it.</div>
+                            </div>
                         </div>
                         <div id="get">
                             <h3>F3::get( <span>string</span> key, [ <span>mixed = NULL</span> arguments ]); <span>mixed</span></h3>
                             <p>Retrieve value of framework variable and apply locale rules</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#get .collapse">view details</button>
                             <div class="collapse in">
-                            	<p>to get a previously saved framework var use:</p>
+                                <p>to get a previously saved framework var use:</p>
 <pre class="prettyprint linenums">
 F3::set( 'c','whatever' );
 F3::get( 'c' ); // [ string ] = 'whatever'
 </pre>
-                           	<p>you can also resolve other vars</p>
+                               <p>you can also resolve other vars</p>
 <pre class="prettyprint linenums">
 F3::set( 'foo','bar' );
 F3::set( 'bar','nice' );
@@ -147,7 +100,7 @@ F3::get( '{{@foo}}' ); // returns: nice
                             <p>Unset framework variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#clear .collapse">view details</button>
                             <div class="collapse in">
-                            	<p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
+                                <p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
 <pre class="prettyprint linenums">
 F3::clear( 'foobar' );
 F3::clear( 'myArray.param1' ); // removes key `param1` from array `myArray`
@@ -160,7 +113,7 @@ F3::clear( 'SESSION' ); // destroys the user SESSION
                             <p>Return TRUE if framework variable has been assigned a value</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#exists .collapse">view details</button>
                             <div class="collapse in">
-                            	<p>To find out if a variable has been previously defined:</p>
+                                <p>To find out if a variable has been previously defined:</p>
 <pre class="prettyprint linenums">
 F3::set('foo','var');
 F3::set('var',1234);
@@ -168,7 +121,7 @@ F3::set('var',1234);
 F3::exists('var'); // true
 F3::exists('{{@foo}}'); // true
 F3::exists('bar'); // false
-</pre>                                
+</pre>
                             </div>
                         </div>
                         <div id="valid">
@@ -176,13 +129,13 @@ F3::exists('bar'); // false
                             <p>Return TRUE if specified string is a valid framework variable name</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#valid .collapse">view details</button>
                             <div class="collapse in">
-                            	<p>Usage:</p>
+                                <p>Usage:</p>
 <pre class="prettyprint linenums">
 F3::valid('var'); // true
 F3::valid('var-1'); // error
 F3::valid('*as'); // error
 F3::valid('Gemüse'); // error
-</pre>                            
+</pre>
                             </div>
                         </div>
                         <div id="mset">
@@ -190,7 +143,7 @@ F3::valid('Gemüse'); // error
                             <p>Multi-variable assignment using associative array</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#mset .collapse">view details</button>
                             <div class="collapse in">
-                            	<p>With a key=>value paired associative array you can define multiple vars.</p>
+                                <p>With a key=>value paired associative array you can define multiple vars.</p>
 <pre class="prettyprint linenums">
 F3::mset(array(
     'var1'=>'value1',
@@ -201,8 +154,8 @@ F3::mset(array(
 F3::get('var1'); // value1
 F3::get('var2'); // value2
 F3::get('var3'); // value3
-</pre> 
-                            	<p>Using the <strong>prefix</strong> argument, you can append all key names.</p>
+</pre>
+                                <p>Using the <strong>prefix</strong> argument, you can append all key names.</p>
 <pre class="prettyprint linenums">
 F3::mset(array(
     'var1'=>'value1',
@@ -214,8 +167,8 @@ F3::mset(array(
 F3::get('pre_var1'); // value1
 F3::get('pre_var2'); // value2
 F3::get('pre_var3'); // value3
-</pre>                       
-							</div>     
+</pre>
+                            </div>
                         </div>
                         <div id="cached">
                             <h3>F3::cached( <span>string</span> key ); <span>bool</span></h3>
@@ -229,9 +182,9 @@ F3::get('pre_var3'); // value3
 <pre class="prettyprint linenums">
 $data = array('value1','value2','value3');
 F3::csv($data); // returns: 'value1','value2','value3'
-</pre>   
-							<div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not escaped automatically. Values containing a ' has to be escaped before.</div>                   
-							</div>   
+</pre>
+                            <div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not escaped automatically. Values containing a ' has to be escaped before.</div>
+                            </div>
                         </div>
                         <div id="split">
                             <h3>F3::split( <span>string</span> str ); <span>array</span></h3>
@@ -251,8 +204,8 @@ Array
     [3] => value4
 )
 */
-</pre>                      
-							</div>
+</pre>
+                            </div>
                         </div>
                         <div id="sign">
                             <h3>F3::sign( <span>mixed</span> num ); <span>int</span></h3>
@@ -277,7 +230,7 @@ F3::set('var','hello');
 F3::concat('var',' world');
 
 echo F3::get('var'); // output: hello world
-</pre> 
+</pre>
                             </div>
                         </div>
                         <div id="sprintf">
@@ -296,7 +249,7 @@ echo F3::sprintf($format, $count, $location); // There are 5 apes on the tree.
                         </div>
                         <div id="append">
                             <h3>F3::append( <span>string</span> var, <span>string</span> key, <span>mixed</span> val ); <span>void</span></h3>
-                            <p>Add keyed element to the end of framework array variable</p>                            
+                            <p>Add keyed element to the end of framework array variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#append .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
@@ -317,7 +270,7 @@ Array
     )
 */
 </pre>
-							<p>You can also resolve other vars within the arguments, to easily switch the processed data, without changing code.</p>
+                            <p>You can also resolve other vars within the arguments, to easily switch the processed data, without changing code.</p>
 <pre class="prettyprint linenums">
 F3::set('stock','fruits');
 F3::set('newFruit','pineapple');
@@ -392,10 +345,10 @@ Array
                         </div>
                         <div id="push">
                             <h3>F3::push( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
-	                        <p>Add element to the end of framework array variable</p>
-	                        <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#push .collapse">view details</button>
-	                        <div class="collapse in">
-	                        <p>Usage:</p>
+                            <p>Add element to the end of framework array variable</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#push .collapse">view details</button>
+                            <div class="collapse in">
+                            <p>Usage:</p>
 <pre class="prettyprint linenums">
 F3::set('data1',array(
     'bar1',
@@ -405,7 +358,7 @@ F3::set('data1',array(
 
 F3::push('data1','bar4');
 
-print_r(F3::get('data1')); 
+print_r(F3::get('data1'));
 /* output:
 Array
 (
@@ -416,7 +369,7 @@ Array
 )
 */
 </pre>
-                        	</div>                           
+                            </div>
                         </div>
                         <div id="pop">
                             <h3>F3::pop( <span>string</span> var ); <span>mixed</span></h3>
@@ -441,7 +394,7 @@ Array
                             <h3>F3::htmldecode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert HTML entities back to their equivalent characters</p>
                         </div>
-                    	<div id="fixslashes">
+                        <div id="fixslashes">
                             <h3>F3::fixslashes( <span>string</span> str ); <span>string</span></h3>
                             <p>Convert Windows double-backslashes to slashes; Also for referencing namespaced classes in subdirectories</p>
                         </div>
@@ -504,7 +457,7 @@ Array
                             <h3>F3::run(); <span>void</span></h3>
                             <p>Process routes based on incoming URI</p>
                         </div>
-                        
+
                     </div>
                     <div class="package" id="validation">
                         <h2>Validation</h2>
@@ -517,8 +470,8 @@ Array
                             <p>Call form field handler</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#input .collapse">view details</button>
                             <div class="collapse in">
-	                            <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r( filter_list() );</code></p>
-	                            <p>The <strong>ops</strong> argument describes options, used by the filter, if that filter supports options.</p>
+                                <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r( filter_list() );</code></p>
+                                <p>The <strong>ops</strong> argument describes options, used by the filter, if that filter supports options.</p>
                             </div>
                         </div>
                     </div>
@@ -534,7 +487,7 @@ Array
                         </div>
                         <div id="putfile">
                             <h3>F3::putfile( <span>string</span> file, <span>string</span> data ); <span>mixed</span></h3>
-                            <p>Lock-aware file writer. Returns number of bytes written or false.</p>                            
+                            <p>Lock-aware file writer. Returns number of bytes written or false.</p>
                         </div>
                         <div id="mkdir">
                             <h3>F3::mkdir( <span>string</span> name, <span>int = 0775</span> perm ); <span></span></h3>
@@ -564,10 +517,10 @@ Array
                     <div class="package" id="misc">
                         <h2>Misc</h2>
                         <div class="internal" id="autoload">
-                            <h3>F3::autoload( <span>string</span> class ); <span>void</span></h3> 
+                            <h3>F3::autoload( <span>string</span> class ); <span>void</span></h3>
                             <p>Intercept instantiation of objects in undefined classes</p>
                             <div class="alert alert-info">
-                            	<strong>Internal!</strong> You probably never need this method.
+                                <strong>Internal!</strong> You probably never need this method.
                             </div>
                         </div>
                         <div id="config">
@@ -582,14 +535,14 @@ Array
                             <h3>F3::instance(); <span>object</span></h3>
                             <p>Return instance of child class</p>
                             <div class="alert alert-info">
-                            	<strong>Internal!</strong> You probably never need this method.
+                                <strong>Internal!</strong> You probably never need this method.
                             </div>
                         </div>
                         <div class="internal" id="loadstatic">
-                            <h3>F3::loadstatic( <span>string</span> class ); <span>void</span></h3> 
+                            <h3>F3::loadstatic( <span>string</span> class ); <span>void</span></h3>
                             <p>onLoad event handler ( static class initializer )</p>
                             <div class="alert alert-info">
-                            	<strong>Internal!</strong> You probably never need this method.
+                                <strong>Internal!</strong> You probably never need this method.
                             </div>
                         </div>
                         <div id="realip">
@@ -597,7 +550,7 @@ Array
                             <p>Sniff headers for real IP address</p>
                         </div>
                         <div id="render">
-                            <h3>F3::render( <span>string</span> file ); <span>string</span></h3> 
+                            <h3>F3::render( <span>string</span> file ); <span>string</span></h3>
                             <p>Render user interface</p>
                         </div>
                         <div id="resolve">
@@ -609,19 +562,19 @@ Array
                             <p>Return TRUE if IP address is local or within a private IPv4 range</p>
                         </div>
                         <div id="start">
-                            <h3>F3::start(); <span>void</span></h3> 
+                            <h3>F3::start(); <span>void</span></h3>
                             <p>Bootstrap code</p>
                         </div>
                         <div id="stop">
-                            <h3>F3::stop(); <span>void</span></h3> 
+                            <h3>F3::stop(); <span>void</span></h3>
                             <p>Execute shutdown function</p>
-                        </div>	
+                        </div>
                         <div id="tidy">
                             <h3>F3::tidy( <span>string</span> html ); <span>string</span></h3>
                             <p>Clean and repair HTML</p>
                         </div>
                     </div>
-                    
+
                 </div>
                 <!--/span-->
             </div>
@@ -630,24 +583,3 @@ Array
         <!--/span-->
     </div>
     <!--/row-->
-
-    <hr>
-
-    <footer>
-        <p>&copy; F3-Junkies 2012</p>
-    </footer>
-
-</div>
-<!--/.fluid-container-->
-
-<!-- javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-1.7.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.quicksearch.js"></script>
-<script src="js/google-code-prettify/prettify.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
