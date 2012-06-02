@@ -1,0 +1,6 @@
+Known Problems:
+- The "Fork me on GitHub" ribbon blocks the "hide/show navbar" button which
+  appears when the page is displayed on smaller screens such as mobile devices.
+- Sections collapsed using Bootstrap's collapse feature should start collapsed.
+  The collapse animation on page load is distracting and doesn't really add
+  anything for intuitiveness beyond what the "view details" buttons do.
