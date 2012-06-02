@@ -104,6 +104,9 @@ td.center {
 		}
 
 
+/* wait for Javascript to show the search field */
+#search-query { display: none; }
+
 /* code prettify */
 
 .prettyprint.linenums {

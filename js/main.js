@@ -45,8 +45,8 @@ $(document).ready(function() {
 
 	/* SearchBox
 	*******************/
-	if($('#search-query').length != 0) {
-		$('#search-query').quicksearch('.package h3', {
+	if($('#search-query').length != 0 && $('.package h3').length != 0) {
+		$('#search-query').show().quicksearch('.package h3', {
 			'show': function () {
 				$(this).parent().show();
 			},
