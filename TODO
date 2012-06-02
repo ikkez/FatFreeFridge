@@ -1,3 +1,6 @@
+TODO:
+- Switch the navbar to match relative URLs against page.url rather than titles.
+
 Known Problems:
 - The "Fork me on GitHub" ribbon blocks the "hide/show navbar" button which
   appears when the page is displayed on smaller screens such as mobile devices.

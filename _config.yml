@@ -3,7 +3,7 @@ lsi: false
 pygments: true
 
 navbar:
-    - [Home, /index.html]
-    - [Examples, /examples_en.html]
-    - [Documentation, /docs_en.html]
-    - [Plugins, /plugins_en.html]
+    - [Home, index.html]
+    - [Examples, examples_en.html]
+    - [Documentation, docs_en.html]
+    - [Plugins, plugins_en.html]

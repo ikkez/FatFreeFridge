@@ -38,7 +38,7 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     {% for tab in site.navbar %}
-                    <li {% if tab[1] == page.url %}class="active"{% endif %}>
+                    <li {% if tab[0] == page.title %}class="active"{% endif %}>
                         <a href="{{ tab[1] }}">{{ tab[0] }}</a>
                     </li>
                     {% endfor %}
