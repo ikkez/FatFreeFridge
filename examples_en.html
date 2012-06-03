@@ -32,8 +32,8 @@ title: Examples
                             <p>This is your base, your control center, the headquarter - call it whatever you want.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#index .collapse">view details</button>
                             <div class="collapse in">
-<pre class="prettyprint linenums">
-&lt;?php
+{% highlight php %}
+<?php
 $app = require __DIR__.'/lib/base.php'; // load F3
 
 $app->set('AUTOLOAD', 'inc/'); // path to my custom classes which will be autoloaded by F3
@@ -45,7 +45,7 @@ $app->set('DB', new DB('mysql:host=localhost;port=3306;dbname=mysqldb', 'admin',
 $app->route('GET /', 'main->start'); // route for our root path
 
 $app->run(); // without this, the whole page won't be displayed
-</pre>
+{% endhighlight %}
                                 <p class="information">Hint: You can use F3 as a static class too by using e.g. F3::set(). But this is not
                                     adviseable and will be deprecated in future releases.</p>
 
@@ -73,27 +73,27 @@ $app->run(); // without this, the whole page won't be displayed
                             <p>The routing engine is a core feature of F3. Easy to use and minimal preparation to work with it.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#route .collapse">view details</button>
                             <div class="collapse in">
-<pre class="prettyprint linenums">
+{% highlight apache %}
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L,QSA]
-</pre>
+{% endhighlight %}
                                 <p>This is the core part of F3's <a href="./docs_en.html#routing">routing engine</a>. As you may recognize. This is no PHP or HTML code.
                                     You have to put this into your <em>.htaccess</em> file in your application folder. <strong>Don't forget to modify RewriteBase</strong></p>
                                 <p>E.g. your app is on <em>http://example.org/myf3app</em>, than you have to modify your .htaccess the following way:</p>
-<pre class="prettyprint linenums">
+{% highlight apache %}
 ...
 RewriteBase /myf3app/
 ...
-</pre>
+{% endhighlight %}
                                 <p>Got it? Since you're done with the setup part for your routing engine, you can use F3's integrated routing engine
                                     which gives you URLs like <em>/news/article/412</em>. Do define normal routes, you have to use this:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 $app->route('GET /news/article/@id', 'news->showArticle');
-</pre>
+{% endhighlight %}
                                 <ul>
                                     <li><strong>GET</strong> indicates, we have a normal request. Others are POST, PUT, HEAD etc.</li>
                                     <li><strong>/news/article/@id</strong> we defined a variable called "id" which can be retrieved by <a href="./docs_en.html#hive">get()</a>

@@ -109,19 +109,6 @@ td.center {
 
 /* code prettify */
 
-.prettyprint.linenums {
-	box-shadow: 40px 0 0 #FBFBFC inset, 41px 0 0 #ECECF0 inset;
-}
-	ol.linenums {
-		margin-left: 40px;
-	}
-		ol.linenums li {
-			color: #BEBEC5 !important;
-			line-height: 18px;
-			text-shadow: 0 1px 0 #FFFFFF;
-			list-style:decimal;
-		}
-
-pre.prettyprint {
-	margin-bottom: 18px;
+div.highlight {
+	margin-bottom: 3ex;
 }

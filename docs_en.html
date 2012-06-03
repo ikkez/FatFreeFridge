@@ -48,32 +48,32 @@ title: Documentation
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#set .collapse">view details</button>
                             <div class="collapse in">
                                 <p>setting framework variables</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set( 'a',123 ); // a=123, integer
 F3::set( 'b','c' ); // b='c', string
 F3::set( 'c','whatever' ); // c='whatever', string
 F3::set( 'd',TRUE ); // d=TRUE, boolean
-</pre>
+{% endhighlight %}
                                 <p>setting arrays</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set( 'hash',array( 'x'=>1,'y'=>2,'z'=>3 ) );
 
 // dot notation is also possible
 F3::set( 'hash.x',1 );
 F3::set( 'hash.y',2 );
 F3::set( 'hash.z',3 );
-</pre>
+{% endhighlight %}
                                 <p>If the <strong>persist</strong> parameter is TRUE, the var is going to be cached.</p>
                                 <div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
                                 <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set( '{{@b}}','wherever' );         // c='wherever'
 F3::set( '{{@b}}','{{@a+1}}' );         // c='124'
 F3::set( '{{@b}}',F3::get( 'a' )+1 );     // c=124
 
 F3::set( 'color','green' );
 F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
-</pre>
+{% endhighlight %}
                                 <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,    as it gets resolved and saved to var on setting it.</div>
                             </div>
                         </div>
@@ -83,16 +83,16 @@ F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#get .collapse">view details</button>
                             <div class="collapse in">
                                 <p>to get a previously saved framework var use:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set( 'c','whatever' );
 F3::get( 'c' ); // [ string ] = 'whatever'
-</pre>
+{% endhighlight %}
                                <p>you can also resolve other vars</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set( 'foo','bar' );
 F3::set( 'bar','nice' );
 F3::get( '{{@foo}}' ); // returns: nice
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="clear">
@@ -101,11 +101,11 @@ F3::get( '{{@foo}}' ); // returns: nice
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#clear .collapse">view details</button>
                             <div class="collapse in">
                                 <p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::clear( 'foobar' );
 F3::clear( 'myArray.param1' ); // removes key `param1` from array `myArray`
 F3::clear( 'SESSION' ); // destroys the user SESSION
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="exists">
@@ -114,14 +114,14 @@ F3::clear( 'SESSION' ); // destroys the user SESSION
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#exists .collapse">view details</button>
                             <div class="collapse in">
                                 <p>To find out if a variable has been previously defined:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('foo','var');
 F3::set('var',1234);
 
 F3::exists('var'); // true
 F3::exists('{{@foo}}'); // true
 F3::exists('bar'); // false
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="valid">
@@ -130,12 +130,12 @@ F3::exists('bar'); // false
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#valid .collapse">view details</button>
                             <div class="collapse in">
                                 <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::valid('var'); // true
 F3::valid('var-1'); // error
 F3::valid('*as'); // error
 F3::valid('Gemüse'); // error
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="mset">
@@ -144,7 +144,7 @@ F3::valid('Gemüse'); // error
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#mset .collapse">view details</button>
                             <div class="collapse in">
                                 <p>With a key=>value paired associative array you can define multiple vars.</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::mset(array(
     'var1'=>'value1',
     'var2'=>'value2',
@@ -154,9 +154,9 @@ F3::mset(array(
 F3::get('var1'); // value1
 F3::get('var2'); // value2
 F3::get('var3'); // value3
-</pre>
+{% endhighlight %}
                                 <p>Using the <strong>prefix</strong> argument, you can append all key names.</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::mset(array(
     'var1'=>'value1',
     'var2'=>'value2',
@@ -167,7 +167,7 @@ F3::mset(array(
 F3::get('pre_var1'); // value1
 F3::get('pre_var2'); // value2
 F3::get('pre_var3'); // value3
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="cached">
@@ -179,10 +179,10 @@ F3::get('pre_var3'); // value3
                             <p>Flatten array values and return as CSV string</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#csv .collapse">view details</button>
                             <div class="collapse in">
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 $data = array('value1','value2','value3');
 F3::csv($data); // returns: 'value1','value2','value3'
-</pre>
+{% endhighlight %}
                             <div class="alert alert-info"><strong>Notice:</strong> Further single quotes are not escaped automatically. Values containing a ' has to be escaped before.</div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ F3::csv($data); // returns: 'value1','value2','value3'
                             <p>Split pipe-, semi-colon, comma-separated string</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#split .collapse">view details</button>
                             <div class="collapse in">
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 $data = 'value1,value2;value3|value4';
 print_r(F3::split($data));
 
@@ -204,7 +204,7 @@ Array
     [3] => value4
 )
 */
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="sign">
@@ -225,12 +225,12 @@ Array
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#concat .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('var','hello');
 F3::concat('var',' world');
 
 echo F3::get('var'); // output: hello world
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="sprintf">
@@ -239,12 +239,12 @@ echo F3::get('var'); // output: hello world
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#sprintf .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 $count = 5;
 $location = 'tree';
 $format = 'There are %d apes on the %s.';
 echo F3::sprintf($format, $count, $location); // There are 5 apes on the tree.
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="append">
@@ -253,7 +253,7 @@ echo F3::sprintf($format, $count, $location); // There are 5 apes on the tree.
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#append .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 $stock = array('apple'=>12,'cherry'=>4,'banana'=>8);
 F3::set('fruits',$stock);
 F3::set('pineapple',3);
@@ -269,9 +269,9 @@ Array
         [peach] => 20
     )
 */
-</pre>
+{% endhighlight %}
                             <p>You can also resolve other vars within the arguments, to easily switch the processed data, without changing code.</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('stock','fruits');
 F3::set('newFruit','pineapple');
 F3::append('{{@stock}}','{{@newFruit}}',20);
@@ -287,7 +287,7 @@ Array
         [pineapple] => 20
     )
 */
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="flip">
@@ -296,7 +296,7 @@ Array
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#flip .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('data',array(
     'foo1'=>'bar1',
     'foo2'=>'bar2',
@@ -313,7 +313,7 @@ Array
     [bar3] => foo3
 )
 */
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="merge">
@@ -322,7 +322,7 @@ Array
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#merge .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('data1',array(
     'foo1'=>'bar1',
     'foo2'=>'bar2',
@@ -340,7 +340,7 @@ Array
     [foo4] => bar4
 )
 */
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="push">
@@ -349,7 +349,7 @@ Array
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#push .collapse">view details</button>
                             <div class="collapse in">
                             <p>Usage:</p>
-<pre class="prettyprint linenums">
+{% highlight php startinline %}
 F3::set('data1',array(
     'bar1',
     'bar2',
@@ -368,7 +368,7 @@ Array
     [3] => bar4
 )
 */
-</pre>
+{% endhighlight %}
                             </div>
                         </div>
                         <div id="pop">
