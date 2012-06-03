@@ -69,7 +69,13 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.quicksearch.js"></script>
 <script src="js/main.js"></script>
-
+<!--[if lte IE 8]>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.tree li:last-child').addClass('last');
+     });
+</script>
+<![endif]-->
 </body>
 </html>
 
