@@ -104,8 +104,8 @@ h3 span {
 }
 
 
-/* wait for Javascript to show the search field */
-#search-query { display: none; }
+/* wait for Javascript to show things it powers */
+#search-query, button.more { display: none; }
 
 /* code prettify */
 

@@ -36,6 +36,7 @@ $(document).ready(function() {
 
 	/* Hidden Sections
 	*******************/
+	$("button.more").show();
 	$(".collapse").collapse().on('show',function(){
 		$(this).prev('button.more').text('hide details');
 	}).on('hide',function(){
