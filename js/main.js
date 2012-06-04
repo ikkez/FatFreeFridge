@@ -56,7 +56,4 @@ $(document).ready(function() {
 		});
 	}
 
-	// enable code highlighting
-	prettyPrint();
-
 });
