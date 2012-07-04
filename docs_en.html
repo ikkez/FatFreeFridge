@@ -374,14 +374,82 @@ Array
                         <div id="pop">
                             <h3>F3::pop( <span>string</span> var ); <span>mixed</span></h3>
                             <p>Remove last element of framework array variable and return the element</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#pop .collapse">view details</button>
+                            <div class="collapse in">
+                            <p>Usage:</p>
+{% highlight php startinline %}
+F3::set('fruits',array(
+	'apple',
+	'banana',
+	'peach'
+));
+
+F3::pop('fruits'); // returns "peach"
+
+print_r(F3::get('fruits'));
+/* output:
+Array
+(
+    [1] => apple
+    [2] => banana
+)
+*/
+{% endhighlight %}
+                            </div>
                         </div>
                         <div id="unshift">
-                            <h3>F3::unshift( <span>string</span> var, <span>mixed</span> val ); <span></span></h3>
+                            <h3>F3::unshift( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
                             <p>Add element to the beginning of framework array variable</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#unshift .collapse">view details</button>
+                            <div class="collapse in">
+                            <p>Usage:</p>
+{% highlight php startinline %}
+F3::set('fruits',array(
+	'apple',
+	'banana',
+	'peach'
+));
+
+F3::unshift('fruits','cherry');
+
+print_r(F3::get('fruits'));
+/* output:
+Array
+(
+    [0] => cherry
+    [1] => apple
+    [2] => banana
+    [3] => peach
+)
+*/
+{% endhighlight %}
+                            </div>
                         </div>
                         <div id="shift">
                             <h3>F3::shift( <span>string</span> var ); <span>mixed</span></h3>
                             <p>Remove first element of framework array variable and return the element</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#shift .collapse">view details</button>
+                            <div class="collapse in">
+                            <p>Usage:</p>
+{% highlight php startinline %}
+F3::set('fruits',array(
+	'apple',
+	'banana',
+	'peach'
+));
+
+F3::shift('fruits'); // returns "apple"
+
+print_r(F3::get('fruits'));
+/* output:
+Array
+(
+    [0] => banana
+    [1] => peach
+)
+*/
+{% endhighlight %}
+                            </div>
                         </div>
                     </div>
                     <div class="package" id="encoding">
