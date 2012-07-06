@@ -76,7 +76,6 @@ F3::set('fruits',array(
 // cache objects
 F3::set('myClass1', new myClass('arg1'), TRUE);
 {% endhighlight %}                                
-                                <div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
                                 <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
 {% highlight php startinline %}
 F3::set( '{{ "{{@b" }}}}','wherever' );         // c='wherever'
@@ -152,7 +151,7 @@ F3::valid('Gemüse'); // error
                             </div>
                         </div>
                         <div id="mset">
-                            <h3>F3::mset( <span>array</span> argument, [ <span>string</span> prefix ]); <span>void</span></h3>
+                            <h3>F3::mset( <span>array</span> argument, [ <span>string</span> prefix ], [ <span>bool = TRUE</span> resolve ]); <span>void</span></h3>
                             <p>Multi-variable assignment using associative array</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#mset .collapse">view details</button>
                             <div class="collapse in">
@@ -187,8 +186,8 @@ F3::get('pre_var3'); // value3
                             <h3>F3::cached( <span>string</span> key ); <span>mixed</span></h3>
                             <p>Determine if framework variable has been cached</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#cached .collapse">view details</button>
-                            If the variable has been cached, it return the timestamp of being cached, otherwise it returns false.
                             <div class="collapse in">
+                            If the variable has been cached, it return the timestamp of being cached, otherwise it returns false.
 {% highlight php startinline %}
 F3::set('var1','foo',TRUE);
 F3::set('var2','bar');
@@ -538,7 +537,7 @@ Array
                             <p>Assign handler to route pattern</p>
                         </div>
                         <div id="map">
-                            <h3>F3::map( <span>string</span> url, <span>string</span> class, [ <span>int = 0</span> ttl ], [ <span>int = 0</span> throttle ], [ <span>bool = TRUE</span> hotlink ]); <span>void</span></h3>
+                            <h3>F3::map( <span>string</span> url, <span>string</span> class, [ <span>int = 0</span> ttl ], [ <span>int = 0</span> throttle ], [ <span>bool = TRUE</span> hotlink ], [ <span>string</span> prefix]); <span>void</span></h3>
                             <p>Provide REST interface by mapping URL to object/class</p>
                         </div>
                         <div id="call">
@@ -582,7 +581,7 @@ Array
                             <p>Lock-aware file writer. Returns number of bytes written or false.</p>
                         </div>
                         <div id="mkdir">
-                            <h3>F3::mkdir( <span>string</span> name, <span>int = 0775</span> perm ); <span></span></h3>
+                            <h3>F3::mkdir( <span>string</span> name, [ <span>int = 0775</span> perm ], [ <span>bool = TRUE</span> recursive]); <span>bool|void</span></h3>
                             <p>Create folder; Trigger error and return FALSE if script has no permission to create folder in the specified path</p>
                         </div>
                     </div>
