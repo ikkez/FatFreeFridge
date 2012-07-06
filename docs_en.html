@@ -63,7 +63,19 @@ F3::set( 'hash.x',1 );
 F3::set( 'hash.y',2 );
 F3::set( 'hash.z',3 );
 {% endhighlight %}
-                                <p>If the <strong>persist</strong> parameter is TRUE, the var is going to be cached.</p>
+                                <p>If the <strong>persist</strong> parameter is TRUE, and the F3 CACHE is enabled, the var is going to be cached.<br />You can cache strings, arrays and all other types - even complete objects. <a href="#get">F3::get()</a> will load them automatically.</p>
+{% highlight php startinline %}     
+// cache string                         
+F3::set('simplevar','foo bar 1337', TRUE);
+//cache big computed arrays
+F3::set('fruits',array(
+    'apple',
+    'banana',
+    'peach',
+), TRUE);
+// cache objects
+F3::set('myClass1', new myClass('arg1'), TRUE);
+{% endhighlight %}                                
                                 <div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
                                 <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
 {% highlight php startinline %}
@@ -74,7 +86,7 @@ F3::set( '{{ "{{@b" }}}}',F3::get( 'a' )+1 );     // c=124
 F3::set( 'color','green' );
 F3::set( 'car','this car is {{ "{{@color" }}}}.' ); // car='this car is green.'
 {% endhighlight %}
-                                <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,    as it gets resolved and saved to var on setting it.</div>
+                                <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`, as it gets resolved and saved to var on setting it.</div>
                             </div>
                         </div>
                         <div id="get">
@@ -93,7 +105,8 @@ F3::set( 'foo','bar' );
 F3::set( 'bar','nice' );
 F3::get( '{{ "{{@foo" }}}}' ); // returns: nice
 {% endhighlight %}
-                            </div>
+							<div class="alert alert-info"><strong>Notice:</strong> A cached framework var gets loaded by get() automatically, if the var was not defined at runtime before.</div>
+							</div>
                         </div>
                         <div id="clear">
                             <h3>F3::clear( <span>string</span> key ); <span>void</span></h3>
@@ -171,8 +184,19 @@ F3::get('pre_var3'); // value3
                             </div>
                         </div>
                         <div id="cached">
-                            <h3>F3::cached( <span>string</span> key ); <span>bool</span></h3>
+                            <h3>F3::cached( <span>string</span> key ); <span>mixed</span></h3>
                             <p>Determine if framework variable has been cached</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#cached .collapse">view details</button>
+                            If the variable has been cached, it return the timestamp of being cached, otherwise it returns false.
+                            <div class="collapse in">
+{% highlight php startinline %}
+F3::set('var1','foo',TRUE);
+F3::set('var2','bar');
+
+F3::cached('var1'); // returns timestamp like 1341584513
+F3::cached('var2'); // returns false
+{% endhighlight %}
+                            </div>
                         </div>
                         <div id="csv">
                             <h3>F3::csv( <span>mixed</span> args ); <span>string</span></h3>
@@ -350,22 +374,22 @@ Array
                             <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
-F3::set('data1',array(
-    'bar1',
-    'bar2',
-    'bar3',
+F3::set('fruits',array(
+    'apple',
+    'banana',
+    'peach',
 ));
 
-F3::push('data1','bar4');
+F3::push('fruits','cherry');
 
-print_r(F3::get('data1'));
+print_r(F3::get('fruits'));
 /* output:
 Array
 (
-    [0] => bar1
-    [1] => bar2
-    [2] => bar3
-    [3] => bar4
+    [0] => apple
+    [1] => banana
+    [2] => peach
+    [3] => cherry
 )
 */
 {% endhighlight %}
