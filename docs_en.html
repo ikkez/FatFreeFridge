@@ -67,12 +67,12 @@ F3::set( 'hash.z',3 );
                                 <div class="alert"><strong>Contribute!</strong> More info and an example is missing here.</div>
                                 <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
 {% highlight php startinline %}
-F3::set( '{{@b}}','wherever' );         // c='wherever'
-F3::set( '{{@b}}','{{@a+1}}' );         // c='124'
-F3::set( '{{@b}}',F3::get( 'a' )+1 );     // c=124
+F3::set( '{{ "{{@b" }}}}','wherever' );         // c='wherever'
+F3::set( '{{ "{{@b" }}}}','{{ "{{@a+1" }}}}' );         // c='124'
+F3::set( '{{ "{{@b" }}}}',F3::get( 'a' )+1 );     // c=124
 
 F3::set( 'color','green' );
-F3::set( 'car','this car is {{@color}}.' ); // car='this car is green.'
+F3::set( 'car','this car is {{ "{{@color" }}}}.' ); // car='this car is green.'
 {% endhighlight %}
                                 <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`,    as it gets resolved and saved to var on setting it.</div>
                             </div>
@@ -91,7 +91,7 @@ F3::get( 'c' ); // [ string ] = 'whatever'
 {% highlight php startinline %}
 F3::set( 'foo','bar' );
 F3::set( 'bar','nice' );
-F3::get( '{{@foo}}' ); // returns: nice
+F3::get( '{{ "{{@foo" }}}}' ); // returns: nice
 {% endhighlight %}
                             </div>
                         </div>
@@ -119,7 +119,7 @@ F3::set('foo','var');
 F3::set('var',1234);
 
 F3::exists('var'); // true
-F3::exists('{{@foo}}'); // true
+F3::exists('{{ "{{@foo" }}}}'); // true
 F3::exists('bar'); // false
 {% endhighlight %}
                             </div>
@@ -274,9 +274,9 @@ Array
 {% highlight php startinline %}
 F3::set('stock','fruits');
 F3::set('newFruit','pineapple');
-F3::append('{{@stock}}','{{@newFruit}}',20);
+F3::append('{{ "{{@stock" }}}}','{{ "{{@newFruit" }}}}',20);
 
-print_r(F3::get('{{@stock}}'));
+print_r(F3::get('{{ "{{@stock" }}}}'));
 /* output:
 Array
     (
