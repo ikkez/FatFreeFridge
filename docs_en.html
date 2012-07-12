@@ -235,12 +235,33 @@ Array
                             <p>Returns -1 if the specified number is negative, 0 if zero, or 1 if the number is positive</p>
                         </div>
                         <div id="ref">
-                            <h3>F3::&ref( <span>string</span> key, [ <span>bool = TRUE</span> ]); <span>mixed</span></h3>
-                            <p>Get framework variable reference/contents</p>
+                            <h3>F3::&ref( <span>string</span> key, [ <span>bool = TRUE</span> set ]); <span>mixed</span></h3>
+                            <p>Get framework variable reference/contents</p>                            
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#ref .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+F3::set('foo','bar');
+
+$var = &F3::ref('foo');
+$var .= '123';
+echo $var;		// "bar123"
+echo F3::get('foo'); 	// "bar123"
+{% endhighlight %}
+                            
+                            <p>If you set the <strong>set</strong> argument to false, it basically behaves like <a href="#get">F3::get()</a> and it only returns a read-only variable.</p>
+                            </div>
                         </div>
                         <div id="copy">
                             <h3>F3::copy( <span>string</span> src, <span>string</span> dst ); <span>void</span></h3>
-                            <p>Copy contents of framework variable to another</p>
+                            <p>Copy contents of framework variable to another</p>                            
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#copy .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+F3::set('var_1','value123');
+F3::copy('var_1','foo');
+echo F3::get('foo'); // outputs "value123"
+{% endhighlight %}
+                            </div>
                         </div>
                         <div id="concat">
                             <h3>F3::concat( <span>string</span> var, <span>string</span> val ); <span>void</span></h3>
