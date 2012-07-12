@@ -49,19 +49,19 @@ title: Documentation
                             <div class="collapse in">
                                 <p>setting framework variables</p>
 {% highlight php startinline %}
-F3::set( 'a',123 ); // a=123, integer
-F3::set( 'b','c' ); // b='c', string
-F3::set( 'c','whatever' ); // c='whatever', string
-F3::set( 'd',TRUE ); // d=TRUE, boolean
+F3::set('a',123); // a=123, integer
+F3::set('b','c'); // b='c', string
+F3::set('c','whatever'); // c='whatever', string
+F3::set('d',TRUE); // d=TRUE, boolean
 {% endhighlight %}
                                 <p>setting arrays</p>
 {% highlight php startinline %}
-F3::set( 'hash',array( 'x'=>1,'y'=>2,'z'=>3 ) );
+F3::set('hash',array( 'x'=>1,'y'=>2,'z'=>3 ) );
 
 // dot notation is also possible
-F3::set( 'hash.x',1 );
-F3::set( 'hash.y',2 );
-F3::set( 'hash.z',3 );
+F3::set('hash.x',1);
+F3::set('hash.y',2);
+F3::set('hash.z',3);
 {% endhighlight %}
                                 <p>If the <strong>persist</strong> parameter is TRUE, and the F3 CACHE is enabled, the var is going to be cached.<br />You can cache strings, arrays and all other types - even complete objects. <a href="#get">F3::get()</a> will load them automatically.</p>
 {% highlight php startinline %}
@@ -78,12 +78,12 @@ F3::set('myClass1', new myClass('arg1'), TRUE);
 {% endhighlight %}                                
                                 <p>By default, the <strong>resolve</strong> parameter allows you to use the F3 specific syntax in getting and setting vars.</p>
 {% highlight php startinline %}
-F3::set( '{{ "{{@b" }}}}','wherever' );         // c='wherever'
-F3::set( '{{ "{{@b" }}}}','{{ "{{@a+1" }}}}' );         // c='124'
-F3::set( '{{ "{{@b" }}}}',F3::get( 'a' )+1 );     // c=124
+F3::set('{{ "{{@b" }}}}','wherever');         // c='wherever'
+F3::set('{{ "{{@b" }}}}','{{ "{{@a+1" }}}}');         // c='124'
+F3::set('{{ "{{@b" }}}}',F3::get('a')+1);     // c=124
 
-F3::set( 'color','green' );
-F3::set( 'car','this car is {{ "{{@color" }}}}.' ); // car='this car is green.'
+F3::set('color','green');
+F3::set('car','this car is {{ "{{@color" }}}}.'); // car='this car is green.'
 {% endhighlight %}
                                 <div class="alert alert-info"><strong>Notice:</strong> changing `color` afterwards, wont affect `car`, as it gets resolved and saved to var on setting it.</div>
                             </div>
@@ -95,14 +95,14 @@ F3::set( 'car','this car is {{ "{{@color" }}}}.' ); // car='this car is green.'
                             <div class="collapse in">
                                 <p>to get a previously saved framework var use:</p>
 {% highlight php startinline %}
-F3::set( 'c','whatever' );
-F3::get( 'c' ); // [ string ] = 'whatever'
+F3::set('c','whatever');
+F3::get('c'); // [ string ] = 'whatever'
 {% endhighlight %}
                                <p>you can also resolve other vars</p>
 {% highlight php startinline %}
-F3::set( 'foo','bar' );
-F3::set( 'bar','nice' );
-F3::get( '{{ "{{@foo" }}}}' ); // returns: nice
+F3::set('foo','bar');
+F3::set('bar','nice');
+F3::get('{{ "{{@foo" }}}}'); // returns: nice
 {% endhighlight %}
 							<div class="alert alert-info"><strong>Notice:</strong> A cached framework var gets loaded by get() automatically, if the var was not defined at runtime before.</div>
 							</div>
@@ -114,9 +114,9 @@ F3::get( '{{ "{{@foo" }}}}' ); // returns: nice
                             <div class="collapse in">
                                 <p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
 {% highlight php startinline %}
-F3::clear( 'foobar' );
-F3::clear( 'myArray.param1' ); // removes key `param1` from array `myArray`
-F3::clear( 'SESSION' ); // destroys the user SESSION
+F3::clear('foobar');
+F3::clear('myArray.param1'); // removes key `param1` from array `myArray`
+F3::clear('SESSION'); // destroys the user SESSION
 {% endhighlight %}
                             </div>
                         </div>
