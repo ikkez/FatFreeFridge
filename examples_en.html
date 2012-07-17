@@ -144,9 +144,9 @@ $app->route('GET /news/article/@id', 'news->showArticle');
                             <p>Simple example of form post via AJAX</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#ajax .collapse">view details</button>
                             <div class="collapse in">
-                            template has form with action and id
+template has form with action and id
 
-
+{% highlight html %}
 
 &lt;form 
 
@@ -157,15 +157,15 @@ $app->route('GET /news/article/@id', 'news->showArticle');
     method=&quot;post&quot;
 
     &gt;
+{% endhighlight %}
+
+
+template has javascript with ajax functions
 
 
 
-template has javascript with ajax funcitons
 
-
-
-
-
+{% highlight javascript %}
 &lt;script&gt;
 
   /* jQuery ajax function 
@@ -224,16 +224,13 @@ template has javascript with ajax funcitons
 
                     console.log(status);
 
-
-
-blah blah blah
-
+{% endhighlight %}
 
 
 php function called by route does what ever you need, then responds with json formatted object
 
 
-
+{% highlight php %}
 // return response using JSON for AJAX
 
                     $return_array = array(); // create assoc array object
@@ -257,7 +254,7 @@ php function called by route does what ever you need, then responds with json fo
                     // send to browser as json encoded object
 
                     echo json_encode($return_array);
-                            
+{% endhighlight %}                         
                             
                             </div>
                         </div>
