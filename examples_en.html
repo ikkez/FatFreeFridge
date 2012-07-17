@@ -147,16 +147,11 @@ $app->route('GET /news/article/@id', 'news->showArticle');
 template has form with action and id
 
 {% highlight html %}
-
-&lt;form 
-
-    action=&quot;/discuss/forums/{{@forum_id}}/{{@forum_name_uri}}/topics/{{@topic_id}}/{{@topic_subject_uri}}&quot; 
-
-    id=&quot;forumPostingForm&quot;
-
-    method=&quot;post&quot;
-
-    &gt;
+<form
+	action="/discuss/forums/{{ "{{@forum_id" }}}}/{{ "{{@forum_name_uri" }}}}/topics/{{ "{{@topic_id" }}}}/{{ "{{@topic_subject_uri" }}}}"
+    id="forumPostingForm"
+    method="post"
+>
 {% endhighlight %}
 
 
@@ -164,96 +159,69 @@ template has javascript with ajax functions
 
 
 
-
 {% highlight javascript %}
-&lt;script&gt;
 
   /* jQuery ajax function 
-
-   * post using the comment form &amp; get back response from server &amp; display on page.
-
-  */
+   * post using the comment form & get back response from server & display on page.
+   */
 
   $(function() /* anonymous func */
-
-  {     /* capture the form submit event */
-
-        $(&quot;#forumPostingForm&quot;).submit(function(event)
-
-        {   /* stop form from submitting normally */
-
-            event.preventDefault(); 
-
-            
+  {
+		/* capture the form submit event */  		
+        $("#forumPostingForm").submit(function(event)
+        {   
+        	/* stop form from submitting normally */
+            event.preventDefault();             
 
             /* setup post function vars */
+            var targetUrl =	$(this).attr('action');
+            var formData =	$(this).serialize();                
 
-            var targetUrl =     $(this).attr('action');
-
-            var formData =      $(this).serialize();
-
-                
-
-            /* send the data using post and put the results in a div with id=&quot;result&quot; */
-
+            /* send the data using post and put the results in a div with id="result" */
             /* post(url, postcontent, callback, datatype returned) */
-
-            var request = $.ajax(
-
-            {   url: targetUrl,
-
-                type: &quot;POST&quot;,
-
-                data: formData,
-
-                success: formpostcompleted,
-
-                dataType: &quot;json&quot;
-
-            }
-
-            );// end ajax function
-
             
+            var request = $.post(
+            	targetUrl,
+                formData,
+                formpostcompleted,
+                "json"            
+            ); // end post function            
 
             function formpostcompleted(data, status)
+            {
+				/* write server response to console for troubleshooting */
+				console.log(data);
+				console.log(status);
+			}
 
-            {    // write server response to console for troubleshooting
-
-                    console.log(data);
-
-                    console.log(status);
-
+		}); // end submit function
+  }
 {% endhighlight %}
 
 
 php function called by route does what ever you need, then responds with json formatted object
 
 
-{% highlight php %}
+{% highlight php startinline %}
 // return response using JSON for AJAX
+F3::route('POST /discuss/forums/@forum_id/@forum_name_uri/topics/@topic_id/@topic_subject_uri', function(){
 
-                    $return_array = array(); // create assoc array object
-
-                    // set values
-
-                    $return_array['id']        = $posting-&gt;id;
-
-                    $return_array['parent_id']        = $posting-&gt;parent_id;
-
-                    $return_array['user_id']        = $posting-&gt;author_id;
-
-                    $return_array['author_name']    = $posting-&gt;author_name;
-
-                    $return_array['author_location'] = $posting-&gt;author_location;
-
-                    $return_array['posting_datetime'] = date('D F j, Y, g:i a');
-
-                    $return_array['body_text']       = $posting-&gt;body_text;
-
-                    // send to browser as json encoded object
-
-                    echo json_encode($return_array);
+	// create assoc array object
+	$return_array = array(); 
+	
+	// set values
+	$return_array['id']					= $posting->id;
+	$return_array['parent_id']        	= $posting->parent_id;
+	$return_array['user_id']        	= $posting->author_id;
+	$return_array['author_name']    	= $posting->author_name;
+	$return_array['author_location'] 	= $posting->author_location;
+	$return_array['posting_datetime'] 	= date('D F j, Y, g:i a');
+	$return_array['body_text']       	= $posting->body_text;
+	
+	// send to browser as json encoded object
+	echo json_encode($return_array);
+	
+});
 {% endhighlight %}                         
                             
                             </div>
