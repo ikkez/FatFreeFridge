@@ -501,10 +501,40 @@ Array
                         <div id="htmlencode">
                             <h3>F3::htmlencode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert special characters to HTML entities using globally-defined character set</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#htmlencode .collapse">view details</button>
+                            <div class="collapse in">                            
+                            <p>The basic usage uses `htmlspecialchars` to convert symbols like `& " ' < >` based on your applications ENCODING (default: utf-8):</p>
+{% highlight php startinline %}
+echo F3::htmlencode("we <b>want</b> 'sugar & candy'");
+
+// output: we &lt;b&gt;want&lt;/b&gt; 'sugar &amp; candy'
+{% endhighlight %}
+							<p>If that's not enough, set the <b>all</b> argument `true`, and it will encode even more chars using `htmlentities`.</p>
+{% highlight php startinline %}
+echo F3::htmlencode("§9: convert symbols & umlauts like ä ü ö",true);
+
+//output: &sect;9: convert symbols &amp; umlauts like &auml; &uuml; &ouml;
+{% endhighlight %}
+                            </div>
                         </div>
                         <div id="htmldecode">
                             <h3>F3::htmldecode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert HTML entities back to their equivalent characters</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#htmldecode .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+echo F3::htmldecode("we &lt;b&gt;want&lt;/b&gt; 'sugar &amp; candy'",true);
+
+// output: we <b>want</b> 'sugar & candy'
+{% endhighlight %}
+							<p>For decoding more chars, set the <b>all</b> argument to `true`.</p>
+{% highlight php startinline %}
+echo F3::htmlencode("&sect;9: convert symbols &amp; umlauts like &auml; &uuml; &ouml;",true);
+
+//output: Â§9: convert symbols & umlauts like Ã¤ Ã¼ Ã¶
+{% endhighlight %}
+							<div class="alert alert-info"><strong>Notice:</strong> It will encode your given string into the target character encoding defined in `ENCODING` var. If you don't want it in UTF-8, set another one like F3::set('ENCODING','ISO-8859-1') before encoding.</div>
+                            </div>
                         </div>
                         <div id="fixslashes">
                             <h3>F3::fixslashes( <span>string</span> str ); <span>string</span></h3>
