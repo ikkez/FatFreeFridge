@@ -542,27 +542,73 @@ echo F3::htmlencode("&sect;9: convert symbols &amp; umlauts like &auml; &uuml; &
                         </div>
                         <div id="stringify">
                             <h3>F3::stringify( <span>mixed</span> arg ); <span>string</span></h3>
-                            <p>Convert PHP expression/value to compressed exportable string</p>
+                            <p>Convert PHP expression/value to compressed exportable string</p>							
                         </div>
                         <div id="hash">
                             <h3>F3::hash( <span>string</span> str ); <span>string</span></h3>
                             <p>Generate Base36/CRC32 hash code</p>
+							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#hash .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+echo F3::hash('foo bar');
+
+//output: 1gsl6pg
+{% endhighlight %}								
+							</div>
                         </div>
                         <div id="hexbin">
                             <h3>F3::hexbin( <span>string</span> hex ); <span>string</span></h3>
                             <p>Convert hexadecimal to binary-packed data</p>
+							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#hexbin .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+echo F3::hexbin('0066006F006F006200610072'); // shortcut like 666f6f626172 is also possible
+
+//output: foobar
+{% endhighlight %}								
+							</div>
                         </div>
                         <div id="binhex">
                             <h3>F3::binhex( <span>string</span> bin ); <span>string</span></h3>
                             <p>Convert binary-packed data to hexadecimal</p>
+							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#binhex .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+echo F3::binhex('foobar');
+
+//output: 666f6f626172
+{% endhighlight %}								
+							</div>
                         </div>
                         <div id="bytes">
                             <h3>F3::bytes( <span>string</span> str ); <span>int</span></h3>
                             <p>Convert engineering-notated string to bytes</p>
+							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#bytes .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+// 1KB
+F3::bytes('1K'); // 1024
+
+// 5MB
+F3::bytes('5M'); // 5242880
+
+// 2GB
+F3::bytes('2G'); // 2147483648
+
+// 1TB
+F3::bytes('1T'); // 1099511627776
+{% endhighlight %}								
+							</div>
                         </div>
                         <div id="remix">
                             <h3>F3::remix( <span>string</span> key ); <span>string</span></h3>
                             <p>Convert from JS dot notation to PHP array notation</p>
+							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#remix .collapse">view details</button>
+                            <div class="collapse in">
+{% highlight php startinline %}
+F3::remix('foo.bar'); // returns: foo['bar']
+{% endhighlight %}								
+							</div>
                         </div>
                     </div>
                     <div class="package" id="routing">
