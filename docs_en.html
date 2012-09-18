@@ -527,11 +527,11 @@ echo F3::htmldecode("we &lt;b&gt;want&lt;/b&gt; 'sugar &amp; candy'",true);
 
 // output: we <b>want</b> 'sugar & candy'
 {% endhighlight %}
-							<p>For decoding more chars, set the <b>all</b> argument to `true`.</p>
+							<p>For decoding more special chars like entities and umlauts, set the <b>all</b> argument to `true`.</p>
 {% highlight php startinline %}
-echo F3::htmlencode("&sect;9: convert symbols &amp; umlauts like &auml; &uuml; &ouml;",true);
+echo F3::htmldecode("&sect;9: convert symbols &amp; umlauts like &auml; &uuml; &ouml;",true);
 
-//output: Â§9: convert symbols & umlauts like Ã¤ Ã¼ Ã¶
+//output: §9: convert symbols & umlauts like ä ü ö welcome!
 {% endhighlight %}
 							<div class="alert alert-info"><strong>Notice:</strong> It will encode your given string into the target character encoding defined in `ENCODING` var. If you don't want it in UTF-8, set another one like F3::set('ENCODING','ISO-8859-1') before encoding.</div>
                             </div>
