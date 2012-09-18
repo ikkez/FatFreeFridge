@@ -666,8 +666,13 @@ F3::remix('foo.bar'); // returns: foo['bar']
                     <div class="package" id="file">
                         <h2>File System</h2>
                         <div id="send">
-                            <h3>F3::send( <span>string</span> file, [ <span>int = 0</span> kbps ], [ <span>bool = TRUE</span> partial ]); <span>bool</span></h3>
-                            <p>Transmit a file for downloading by HTTP client; If kilobytes per second is specified, output is throttled ( bandwidth will not be controlled by default ); Return TRUE if successful, FALSE otherwise; Support for partial downloads is indicated by third argument</p>
+                            <h3>F3::send( <span>string</span> file, [ <span>int = 0</span> kbps ], [ <span>bool = TRUE</span> partial ], [ <span>bool = FALSE</span> attach]); <span>bool</span></h3>
+                            <p>Transmit a file for downloading by HTTP client</p>
+                        	<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#send .collapse">view details</button>
+                        	<div class="collapse in">
+                        	    <p>If kilobytes per second is specified, output is throttled ( bandwidth will not be controlled by default ).</p>
+                        	    <p>It returns TRUE if successful, FALSE otherwise. Support for partial downloads is indicated by third argument. Download as attachment if fourth argument is TRUE</p>
+                        	</div>
                         </div>
                         <div id="getfile">
                             <h3>F3::getfile( <span>string</span> file ); <span>string</span></h3>
