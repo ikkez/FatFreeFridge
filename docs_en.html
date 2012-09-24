@@ -105,7 +105,7 @@ F3::set('bar','nice');
 F3::get('{{ "{{@foo" }}}}'); // returns: nice
 {% endhighlight %}
 							<div class="alert alert-info"><strong>Notice:</strong> A cached framework var gets loaded by get() automatically, if the var was not defined at runtime before.</div>
-							<p>Since F3 version 2.0.13 it is also possible to use expressions along with variable array keys. Using these operations makes it more easier to access i.e. the next and previous keys of an array like this:</p>
+							<p>Since F3 version 2.0.13 it is also possible to use expressions along with variable array keys. Using these operations makes it easier to access i.e. the next and previous keys of an array like this:</p>
 {% highlight php startinline %}
 F3::set('myarray', array(
         0 => 'value_0',  
@@ -688,7 +688,7 @@ F3::remix('foo.bar'); // returns: foo['bar']
                             <p>Lock-aware file reader</p>
                         </div>
                         <div id="putfile">
-                            <h3>F3::putfile( <span>string</span> file, <span>string</span> data, <span>bool = FALSE</span> append ); <span>mixed</span></h3>
+                            <h3>F3::putfile( <span>string</span> file, <span>string</span> data, [ <span>bool = FALSE</span> append]); <span>mixed</span></h3>
                             <p>Lock-aware file writer. Returns number of bytes written or false. Use `append` arguement to just add data to the end of the file, instead of writing/overwriting the whole file.</p>
                         </div>
                         <div id="mkdir">
