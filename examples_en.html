@@ -31,7 +31,7 @@ title: Examples
                             <h2>Your Start: the index.php and folders</h2>
                             <p>This is your base, your control center, the headquarter - call it whatever you want.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#index .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
 {% highlight php %}
 <?php
 $app = require __DIR__.'/lib/base.php'; // load F3
@@ -71,7 +71,7 @@ $app->run(); // without this, the whole page won't be displayed
                             <h2>Still at the Start: Routing</h2>
                             <p>The routing engine is a core feature of F3. Easy to use and minimal preparation to work with it.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#route .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
 {% highlight apache %}
 RewriteEngine On
 RewriteBase /
@@ -110,7 +110,7 @@ $app->route('GET /news/article/@id', 'news->showArticle');
                             <h2>Building the App</h2>
                             <p>You know the basics, now add your own stuff.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#build .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
                             <div class="alert"><strong>Contribute!</strong></div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ $app->route('GET /news/article/@id', 'news->showArticle');
                             <h2>Form Validation</h2>
                             <p>External code in your app? No way! Use the inbound form validation to make your app more secure.</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#formval .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
                             <div class="alert"><strong>Contribute!</strong></div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@ $app->route('GET /news/article/@id', 'news->showArticle');
                             <h2>Login</h2>
                             <p>How could a basic Login Class look like?</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#login .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
                             <div class="alert"><strong>Contribute!</strong></div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ $app->route('GET /news/article/@id', 'news->showArticle');
                             <h2>AJAX</h2>
                             <p>Simple example of form post via AJAX</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#ajax .collapse">view details</button>
-                            <div class="collapse in">
+                            <div class="collapse">
 template has form with action and id
 
 {% highlight html %}
