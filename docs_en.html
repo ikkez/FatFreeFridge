@@ -46,7 +46,7 @@ title: Documentation
                             <h3>F3::set( <span>string</span> key, <span>mixed</span> value, [ <span>bool = FALSE</span> persist ], [ <span>bool = TRUE</span> resolve ]); <span>void</span></h3>
                             <p>Bind value to framework variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#set .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>setting framework variables</p>
 {% highlight php startinline %}
 F3::set('a',123); // a=123, integer
@@ -92,7 +92,7 @@ F3::set('car','this car is {{ "{{@color" }}}}.'); // car='this car is green.'
                             <h3>F3::get( <span>string</span> key, [ <span>mixed = NULL</span> arguments ]); <span>mixed</span></h3>
                             <p>Retrieve value of framework variable and apply locale rules</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#get .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>to get a previously saved framework var use:</p>
 {% highlight php startinline %}
 F3::set('c','whatever');
@@ -120,7 +120,7 @@ F3::get('myarray[@akey+1]'); // returns: value_1
                             <h3>F3::clear( <span>string</span> key ); <span>void</span></h3>
                             <p>Unset framework variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#clear .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>If you want to remove a framwork variable from memory, you can clear it like this:</p>
 {% highlight php startinline %}
 F3::clear('foobar');
@@ -133,7 +133,7 @@ F3::clear('SESSION'); // destroys the user SESSION
                             <h3>F3::exists( <span>string</span> key ); <span>bool</span></h3>
                             <p>Return TRUE if framework variable has been assigned a value</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#exists .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>To find out if a variable has been previously defined:</p>
 {% highlight php startinline %}
 F3::set('foo','var');
@@ -149,7 +149,7 @@ F3::exists('bar'); // false
                             <h3>F3::valid( <span>string</span> key ); <span>bool</span></h3>
                             <p>Return TRUE if specified string is a valid framework variable name</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#valid .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>Usage:</p>
 {% highlight php startinline %}
 F3::valid('var'); // true
@@ -163,7 +163,7 @@ F3::valid('Gemüse'); // error
                             <h3>F3::mset( <span>array</span> argument, [ <span>string</span> prefix ], [ <span>bool = TRUE</span> resolve ]); <span>void</span></h3>
                             <p>Multi-variable assignment using associative array</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#mset .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>With a key=>value paired associative array you can define multiple vars.</p>
 {% highlight php startinline %}
 F3::mset(array(
@@ -195,7 +195,7 @@ F3::get('pre_var3'); // value3
                             <h3>F3::cached( <span>string</span> key ); <span>mixed</span></h3>
                             <p>Determine if framework variable has been cached</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#cached .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             If the variable has been cached, it return the timestamp of being cached, otherwise it returns false.
 {% highlight php startinline %}
 F3::set('var1','foo',TRUE);
@@ -210,7 +210,7 @@ F3::cached('var2'); // returns false
                             <h3>F3::csv( <span>mixed</span> args ); <span>string</span></h3>
                             <p>Flatten array values and return as CSV string</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#csv .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 $data = array('value1','value2','value3');
 F3::csv($data); // returns: 'value1','value2','value3'
@@ -222,7 +222,7 @@ F3::csv($data); // returns: 'value1','value2','value3'
                             <h3>F3::split( <span>string</span> str ); <span>array</span></h3>
                             <p>Split pipe-, semi-colon, comma-separated string</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#split .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 $data = 'value1,value2;value3|value4';
 print_r(F3::split($data));
@@ -247,7 +247,7 @@ Array
                             <h3>F3::&ref( <span>string</span> key, [ <span>bool = TRUE</span> set ]); <span>mixed</span></h3>
                             <p>Get framework variable reference/contents</p>                            
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#ref .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 F3::set('foo','bar');
 
@@ -264,7 +264,7 @@ echo F3::get('foo'); 	// "bar123"
                             <h3>F3::copy( <span>string</span> src, <span>string</span> dst ); <span>void</span></h3>
                             <p>Copy contents of framework variable to another</p>                            
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#copy .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 F3::set('var_1','value123');
 F3::copy('var_1','foo');
@@ -276,7 +276,7 @@ echo F3::get('foo'); // outputs "value123"
                             <h3>F3::concat( <span>string</span> var, <span>string</span> val ); <span>void</span></h3>
                             <p>Concatenate string to framework string variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#concat .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('var','hello');
@@ -290,7 +290,7 @@ echo F3::get('var'); // output: hello world
                             <h3>F3::sprintf(); <span>string</span></h3>
                             <p>Format framework string variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#sprintf .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 $count = 5;
@@ -304,7 +304,7 @@ echo F3::sprintf($format, $count, $location); // There are 5 apes on the tree.
                             <h3>F3::append( <span>string</span> var, <span>string</span> key, <span>mixed</span> val ); <span>void</span></h3>
                             <p>Add keyed element to the end of framework array variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#append .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 $stock = array('apple'=>12,'cherry'=>4,'banana'=>8);
@@ -347,7 +347,7 @@ Array
                             <h3>F3::flip( <span>string</span> var ); <span>void</span></h3>
                             <p>Swap keys and values of framework array variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#flip .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('data',array(
@@ -373,7 +373,7 @@ Array
                             <h3>F3::merge(); <span>void</span></h3>
                             <p>Merge one or more framework array variables</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#merge .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('data1',array(
@@ -400,7 +400,7 @@ Array
                             <h3>F3::push( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
                             <p>Add element to the end of framework array variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#push .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('fruits',array(
@@ -428,7 +428,7 @@ Array
                             <h3>F3::pop( <span>string</span> var ); <span>mixed</span></h3>
                             <p>Remove last element of framework array variable and return the element</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#pop .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('fruits',array(
@@ -454,7 +454,7 @@ Array
                             <h3>F3::unshift( <span>string</span> var, <span>mixed</span> val ); <span>void</span></h3>
                             <p>Add element to the beginning of framework array variable</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#unshift .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('fruits',array(
@@ -482,7 +482,7 @@ Array
                             <h3>F3::shift( <span>string</span> var ); <span>mixed</span></h3>
                             <p>Remove first element of framework array variable and return the element</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#shift .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                             <p>Usage:</p>
 {% highlight php startinline %}
 F3::set('fruits',array(
@@ -511,7 +511,7 @@ Array
                             <h3>F3::htmlencode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert special characters to HTML entities using globally-defined character set</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#htmlencode .collapse">view details</button>
-                            <div class="collapse">                            
+                            <div class="collapse in">                            
                             <p>The basic usage uses `htmlspecialchars` to convert symbols like `& " ' < >` based on your applications ENCODING (default: utf-8):</p>
 {% highlight php startinline %}
 echo F3::htmlencode("we <b>want</b> 'sugar & candy'");
@@ -530,7 +530,7 @@ echo F3::htmlencode("§9: convert symbols & umlauts like ä ü ö",true);
                             <h3>F3::htmldecode( <span>string</span> string, [ <span>bool = FALSE</span> all ]); <span>string</span></h3>
                             <p>Convert HTML entities back to their equivalent characters</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#htmldecode .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 echo F3::htmldecode("we &lt;b&gt;want&lt;/b&gt; 'sugar &amp; candy'",true);
 
@@ -557,7 +557,7 @@ echo F3::htmldecode("&sect;9: convert symbols &amp; umlauts like &auml; &uuml; &
                             <h3>F3::hash( <span>string</span> str ); <span>string</span></h3>
                             <p>Generate Base36/CRC32 hash code</p>
 							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#hash .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 echo F3::hash('foo bar');
 
@@ -569,7 +569,7 @@ echo F3::hash('foo bar');
                             <h3>F3::hexbin( <span>string</span> hex ); <span>string</span></h3>
                             <p>Convert hexadecimal to binary-packed data</p>
 							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#hexbin .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 echo F3::hexbin('0066006F006F006200610072'); // shortcut like 666f6f626172 is also possible
 
@@ -581,7 +581,7 @@ echo F3::hexbin('0066006F006F006200610072'); // shortcut like 666f6f626172 is al
                             <h3>F3::binhex( <span>string</span> bin ); <span>string</span></h3>
                             <p>Convert binary-packed data to hexadecimal</p>
 							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#binhex .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 echo F3::binhex('foobar');
 
@@ -593,7 +593,7 @@ echo F3::binhex('foobar');
                             <h3>F3::bytes( <span>string</span> str ); <span>int</span></h3>
                             <p>Convert engineering-notated string to bytes</p>
 							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#bytes .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 // 1KB
 F3::bytes('1K'); // 1024
@@ -613,7 +613,7 @@ F3::bytes('1T'); // 1099511627776
                             <h3>F3::remix( <span>string</span> key ); <span>string</span></h3>
                             <p>Convert from JS dot notation to PHP array notation</p>
 							<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#remix .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
 {% highlight php startinline %}
 F3::remix('foo.bar'); // returns: foo['bar']
 {% endhighlight %}								
@@ -666,7 +666,7 @@ F3::remix('foo.bar'); // returns: foo['bar']
                             <h3>F3::input( <span>string</span> fields, <span>mixed</span> funcs, [ <span>string = NULL</span> tags ], [ <span>int</span> filter ], [ <span>array</span> opt ], [ <span>bool = TRUE</span> assign ]); <span>void</span></h3>
                             <p>Call form field handler</p>
                             <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#input .collapse">view details</button>
-                            <div class="collapse">
+                            <div class="collapse in">
                                 <p>Default filter id is FILTER_UNSAFE_RAW. Other useful filter might be: FILTER_VALIDATE_EMAIL, FILTER_VALIDATE_URL, FILTER_VALIDATE_IP. To get a list of all supported filter use <code>print_r( filter_list() );</code></p>
                                 <p>The <strong>ops</strong> argument describes options, used by the filter, if that filter supports options.</p>
                             </div>
@@ -678,7 +678,7 @@ F3::remix('foo.bar'); // returns: foo['bar']
                             <h3>F3::send( <span>string</span> file, [ <span>int = 0</span> kbps ], [ <span>bool = TRUE</span> partial ], [ <span>bool = FALSE</span> attach]); <span>bool</span></h3>
                             <p>Transmit a file for downloading by HTTP client</p>
                         	<button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#send .collapse">view details</button>
-                        	<div class="collapse">
+                        	<div class="collapse in">
                         	    <p>If kilobytes per second is specified, output is throttled ( bandwidth will not be controlled by default ).</p>
                         	    <p>It returns TRUE if successful, FALSE otherwise. Support for partial downloads is indicated by third argument. Download as attachment if fourth argument is TRUE</p>
                         	</div>
@@ -784,6 +784,7 @@ F3::remix('foo.bar'); // returns: foo['bar']
 $ax = new Axon('users');
 $ax->load(array('name = :name', array(':name' => 'John'))); 
 // Axon will automatically escape quotes, type cast etc.
+{% endhighlight %}  
                         </div>
                         <div id="axon_save">
                             <h3>Axon->save(); </h3>
