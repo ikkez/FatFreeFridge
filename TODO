@@ -1,7 +1,0 @@
-TODO:
-- Switch the navbar to match relative URLs against page.url rather than titles.
-
-Known Problems:
-- Sections collapsed using Bootstrap's collapse feature should start collapsed.
-  The collapse animation on page load is distracting and doesn't really add
-  anything for intuitiveness beyond what the "view details" buttons do.
