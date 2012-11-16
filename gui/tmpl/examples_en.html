@@ -1,0 +1,238 @@
+---
+layout: default
+title: Examples
+---
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Basic</li>
+                    <li><a href="#">Your start: the index.php and folders</a></li>
+                    <li><a href="#">Routing Engine</a></li>
+                    <li><a href="#">Building the App</a></li>
+                    <li class="nav-header">Advanced</li>
+                    <li><a href="#">Form Validation</a></li>
+                    <li><a href="#">Login / Auth Class</a></li>
+                    <li class="nav-header">Expert</li>
+                    <li><a href="#">AJAX Usage</a></li>
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h1>Examples</h1>
+                    <p>Some code snippets to boost your daily fat-free development. bla bla bla, some more cool text here.</p>
+                    <hr />
+                    <div class="package">
+                        <div id="index">
+                            <h2>Your Start: the index.php and folders</h2>
+                            <p>This is your base, your control center, the headquarter - call it whatever you want.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#index .collapse">view details</button>
+                            <div class="collapse">
+{% highlight php %}
+<?php
+$app = require __DIR__.'/lib/base.php'; // load F3
+
+$app->set('AUTOLOAD', 'inc/'); // path to my custom classes which will be autoloaded by F3
+$app->set('CACHE', false); // disable caching for developement
+$app->set('DEBUG', 3); // get all debug infos; to turn off use 0 (zero)
+$app->set('GUI', 'ui/'); // path for templates
+$app->set('DB', new DB('mysql:host=localhost;port=3306;dbname=mysqldb', 'admin', 'p455w0rD')); // global db connection
+
+$app->route('GET /', 'main->start'); // route for our root path
+
+$app->run(); // without this, the whole page won't be displayed
+{% endhighlight %}
+                                <p class="information">Hint: You can use F3 as a static class too by using e.g. F3::set(). But this is not
+                                    adviseable and will be deprecated in future releases.</p>
+
+                                <p>We recommend the following layout for your folder structure.</p>
+                                <ul class="tree">
+                                    <li>/
+                                        <ul>
+                                            <li>/index.php</li>
+                                            <li>/lib</li>
+                                            <li>/inc</li>
+                                            <li>/ui</li>
+                                            <li>/temp (auto-generated)</li>
+                                            <li>/cache (auto-generated)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="package" >
+                        <div id="route">
+                            <h2>Still at the Start: Routing</h2>
+                            <p>The routing engine is a core feature of F3. Easy to use and minimal preparation to work with it.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#route .collapse">view details</button>
+                            <div class="collapse">
+{% highlight apache %}
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L,QSA]
+{% endhighlight %}
+                                <p>This is the core part of F3's <a href="docs_en.html#routing">routing engine</a>. As you may recognize. This is no PHP or HTML code.
+                                    You have to put this into your <em>.htaccess</em> file in your application folder. <strong>Don't forget to modify RewriteBase</strong></p>
+                                <p>E.g. your app is on <em>http://example.org/myf3app</em>, than you have to modify your .htaccess the following way:</p>
+{% highlight apache %}
+...
+RewriteBase /myf3app/
+...
+{% endhighlight %}
+                                <p>Got it? Since you're done with the setup part for your routing engine, you can use F3's integrated routing engine
+                                    which gives you URLs like <em>/news/article/412</em>. Do define normal routes, you have to use this:</p>
+{% highlight php startinline %}
+$app->route('GET /news/article/@id', 'news->showArticle');
+{% endhighlight %}
+                                <ul>
+                                    <li><strong>GET</strong> indicates, we have a normal request. Others are POST, PUT, HEAD etc.</li>
+                                    <li><strong>/news/article/@id</strong> we defined a variable called "id" which can be retrieved by <a href="docs_en.html#hive">get()</a>
+                                        everywhere your code</li>
+                                    <li><strong>news->showArticle</strong> "news" is our PHP class which will be autoloaded (see your AUTOLOAD value) by F3
+                                        and afterwards its showArticle function will be called.</li>
+                                </ul>
+                                <p class="alert">F3 loads all your files automatically. Class- and file name has to be same! In this case, it's our inc/news.php</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="package">
+                        <div id="build">
+                            <h2>Building the App</h2>
+                            <p>You know the basics, now add your own stuff.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#build .collapse">view details</button>
+                            <div class="collapse">
+                            <div class="alert"><strong>Contribute!</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="package">
+                        <div id="formval">
+                            <h2>Form Validation</h2>
+                            <p>External code in your app? No way! Use the inbound form validation to make your app more secure.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#formval .collapse">view details</button>
+                            <div class="collapse">
+                            <div class="alert"><strong>Contribute!</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="package">
+                        <div id="login">
+                            <h2>Login</h2>
+                            <p>How could a basic Login Class look like?</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#login .collapse">view details</button>
+                            <div class="collapse">
+                            <div class="alert"><strong>Contribute!</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="package">
+                        <div id="ajax">
+                            <h2>AJAX</h2>
+                            <p>Simple example of form post via AJAX</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#ajax .collapse">view details</button>
+                            <div class="collapse">
+template has form with action and id
+
+{% highlight html %}
+<form
+	action="/discuss/forums/{{ "{{@forum_id" }}}}/{{ "{{@forum_name_uri" }}}}/topics/{{ "{{@topic_id" }}}}/{{ "{{@topic_subject_uri" }}}}"
+    id="forumPostingForm"
+    method="post"
+>
+{% endhighlight %}
+
+
+template has javascript with ajax functions
+
+
+
+{% highlight javascript %}
+
+  /* jQuery ajax function 
+   * post using the comment form & get back response from server & display on page.
+   */
+
+  $(function() /* anonymous func */
+  {
+		/* capture the form submit event */  		
+        $("#forumPostingForm").submit(function(event)
+        {   
+        	/* stop form from submitting normally */
+            event.preventDefault();             
+
+            /* setup post function vars */
+            var targetUrl =	$(this).attr('action');
+            var formData =	$(this).serialize();                
+
+            /* send the data using post and put the results in a div with id="result" */
+            /* post(url, postcontent, callback, datatype returned) */
+            
+            var request = $.post(
+            	targetUrl,
+                formData,
+                formpostcompleted,
+                "json"            
+            ); // end post function            
+
+            function formpostcompleted(data, status)
+            {
+				/* write server response to console for troubleshooting */
+				console.log(data);
+				console.log(status);
+			}
+
+		}); // end submit function
+  }
+{% endhighlight %}
+
+
+php function called by route does what ever you need, then responds with json formatted object
+
+
+{% highlight php startinline %}
+// return response using JSON for AJAX
+F3::route('POST /discuss/forums/@forum_id/@forum_name_uri/topics/@topic_id/@topic_subject_uri', function(){
+
+	// create assoc array object
+	$return_array = array(); 
+	
+	// set values
+	$return_array['id']					= $posting->id;
+	$return_array['parent_id']        	= $posting->parent_id;
+	$return_array['user_id']        	= $posting->author_id;
+	$return_array['author_name']    	= $posting->author_name;
+	$return_array['author_location'] 	= $posting->author_location;
+	$return_array['posting_datetime'] 	= date('D F j, Y, g:i a');
+	$return_array['body_text']       	= $posting->body_text;
+	
+	// send to browser as json encoded object
+	echo json_encode($return_array);
+	
+});
+{% endhighlight %}                         
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
