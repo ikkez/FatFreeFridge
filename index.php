@@ -18,10 +18,10 @@ require __DIR__.'/lib/base.php';
 
 class F3WIKI extends F3instance {
 
-	public function __construct(){
-
+	public function __construct()
+	{
 		// set global vars
-		$this->set('AUTOLOAD', 'inc/;inc/temp/');
+		$this->set('AUTOLOAD', 'inc/;app/');
 		$this->set('DEBUG', 3);
 		$this->set('TZ', 'Europe/Berlin');
 
@@ -36,11 +36,11 @@ class F3WIKI extends F3instance {
 
 		// some routes
 		$this->route('GET /', function() { F3::reroute('/home'); });
-		$this->route('GET /@page', '\Page->view');
-		$this->route('GET /install', '\Main->install');
+		$this->route('GET /@page', '\Page\Controller->view');
+		$this->route('GET /install', '\Common->install');
 
 		// error handler
-		$this->set('ONERROR','\Page->error');
+		$this->set('ONERROR','\Common->error');
 	}
 }
 
