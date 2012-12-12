@@ -779,34 +779,57 @@ F3::remix('foo.bar'); // returns: foo['bar']
                     <div class="package" id="axon">
                         <h2>Axon</h2>
                         <div id="axon_load">
-                            <h3>Axon->load(); <span>object</span></h3>
+                            <h3>Axon->load($cond); <span>object</span></h3>
+                            <p>load() will fill the object to manipulate the row.</p>
+                            <div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
 $ax->load(array('name = :name', array(':name' => 'John'))); 
 // Axon will automatically escape quotes, type cast etc.
 {% endhighlight %}  
-                        </div>
+			    </div>
+							</div>
                         <div id="axon_save">
-                            <h3>Axon->save(); </h3>
-                            <p>Saves current object values to the database. Axon decides whether to created or update the entry.</p>
+                            <h3>Axon->save(<span>mixed</span> cond); <span>void</span></h3>
+                            <p>Saves current object values to the database. Axon decides whether to created or update the entry. Parameter is optional.</p>
+							<div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
 $ax->name = 'John';
 $ax->lastname = 'Doe';
 $ax->save();
 {% endhighlight %}  
+							</div>
                         </div>
                         <div id="axon_dry">
-                            <h3>Axon->dry(); <span>bool</span></h3>
-                            <p>Checks whether the Axon object is hydrated or not. Hydrated = load() / find() was successfull.</p>
+                            <h3>Axon->dry(<span>mixed</span> cond); <span>bool</span></h3>
+                            <p>Checks whether the Axon object is hydrated or not. Hydrated = load() / find() was successfull. Parameter is optional.</p>
+							<div class="collapse in">
+{% highlight php startinline %}
+$ax = new Axon('users');
+$ax->load(array('name = :name', array(':name' => 'John')));
+
+if($ax->dry()) // if the result is dry (empty) dry() will be true
+	echo "Error: couldn't find the user'";
+else
+	echo "";
+{% endhighlight %}  
+							</div>
                         </div>
                         <div id="axon_erase">
-                            <h3>Axon->erase();</h3>
-                            <p>Deletes the current hydrated object from the database.</p>
+                            <h3>Axon->erase(<span>mixed</span> cond);</h3>
+                            <p>Deletes the current hydrated object from the database. Parameter is optional</p>
+                            <div class="collapse in">
+{% highlight php startinline %}
+$ax = new Axon('users');
+$ax->load(array('name = :name', array(':name' => 'John')));
+$ax->erase();
+{% endhighlight %}  
+							</div>
                         </div>
                         <div id="axon_find">
-                            <h3>Axon->find(); <span>object</span></h3>
-                            <p>Finds all entries depending on the condition and returns an object</p>
+                            <h3>Axon->find(<span>mixed</span> cond); <span>object</span></h3>
+                            <p>Finds all entries depending on the condition and returns an object. If parameter isn't given, Axon will fetch <strong>all</strong> rows from the table.</p>
                         </div>
                         <div id="axon_afind">
                             <h3>Axon->afind(); <span>array</span></h3>
@@ -814,14 +837,14 @@ $ax->save();
                         </div>
                         <div id="axon_findone">
                             <h3>Axon->findone(); <span>object</span></h3>
-                            <p>Equal to find(), but returns only the first retsult</p>
+                            <p>Equal to find(), but returns only the first result</p>
                         </div>
                         <div id="axon_afindone">
                             <h3>Axon->afindone(); <span>array</span></h3>
-                            <p>Equals to afind(), but returns only the first retsult</p>
+                            <p>Equals to afind(), but returns only the first result</p>
                         </div>
                         <div id="axon_found">
-                            <h3>Axon->found(); <span>int</span></h3>
+                            <h3>Axon->found(<span>mixed</span> cond); <span>int</span></h3>
                             <p>found() returns the number of records found by the condition or an already issued found() / load().</p>
                         </div>
                         <div id="axon_reset">
@@ -835,10 +858,20 @@ $ax->save();
                         <div id="axon_next">
                             <h3>Axon->next(); <span>array</span></h3>
                             <p>Returns the next record.</p>
+                            <div class="collapse in">
+{% highlight php startinline %}
+// Assume you have more than one person in your table named "John"
+$ax = new Axon('users');
+$ax->load(array('name = :name', array(':name' => 'John')));
+echo $ax->last_name; // echoes "Doe"
+$ax->next();
+echo $ax->last_name; // echoes "Miller" 
+{% endhighlight %}  
+							</div>
                         </div>
                         <div id="axon_prev">
                             <h3>Axon->prev(); <span>array</span></h3>
-                            <p>Returns the previous record.</p>
+                            <p>Returns the previous record. See example for next()</p>
                         </div>
                         <div id="axon_copyfrom">
                             <h3>Axon->copyFrom(); </h3>
