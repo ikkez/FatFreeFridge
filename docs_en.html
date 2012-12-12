@@ -781,17 +781,19 @@ F3::remix('foo.bar'); // returns: foo['bar']
                         <div id="axon_load">
                             <h3>Axon->load($cond); <span>object</span></h3>
                             <p>load() will fill the object to manipulate the row.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#axon_load .collapse">view details</button>
                             <div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
 $ax->load(array('name = :name', array(':name' => 'John'))); 
 // Axon will automatically escape quotes, type cast etc.
 {% endhighlight %}  
-			    </div>
+			   		 		</div>
 							</div>
                         <div id="axon_save">
                             <h3>Axon->save(<span>mixed</span> cond); <span>void</span></h3>
                             <p>Saves current object values to the database. Axon decides whether to created or update the entry. Parameter is optional.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#axon_save .collapse">view details</button>
 							<div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
@@ -804,6 +806,7 @@ $ax->save();
                         <div id="axon_dry">
                             <h3>Axon->dry(<span>mixed</span> cond); <span>bool</span></h3>
                             <p>Checks whether the Axon object is hydrated or not. Hydrated = load() / find() was successfull. Parameter is optional.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#axon_dry .collapse">view details</button>
 							<div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
@@ -819,6 +822,7 @@ else
                         <div id="axon_erase">
                             <h3>Axon->erase(<span>mixed</span> cond);</h3>
                             <p>Deletes the current hydrated object from the database. Parameter is optional</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#axon_erase .collapse">view details</button>
                             <div class="collapse in">
 {% highlight php startinline %}
 $ax = new Axon('users');
@@ -858,6 +862,7 @@ $ax->erase();
                         <div id="axon_next">
                             <h3>Axon->next(); <span>array</span></h3>
                             <p>Returns the next record.</p>
+                            <button class="btn btn-mini btn-info more" data-toggle="collapse" data-target="#axon_next .collapse">view details</button>
                             <div class="collapse in">
 {% highlight php startinline %}
 // Assume you have more than one person in your table named "John"
