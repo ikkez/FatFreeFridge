@@ -3,6 +3,7 @@
 /**
  * some common used stuff, not sorted elsewhere yet.
  */
+
 class Common {
 
 	/**
@@ -10,13 +11,18 @@ class Common {
 	 */
 	public function error()
 	{
-		$content = '<div class="alert alert-error">';
-		$content .= '<h1>ERROR: ' . F3::get('ERROR.code') . ' - ' . F3::get('ERROR.title') . '</h1>';
-		$content .= F3::get('ERROR.text') . '</div>';
-		$content .= '<p>' . F3::get('ERROR.trace') . '</p>'; // does not work... is empty. bug?
+        $f3 = \Base::instance();
 
-		F3::set('content', $content);
-		echo Template::serve('layout/default.html');
+        $content = '<div class="alert alert-error">';
+		$content .= '<h1>ERROR: ' . $f3->get('ERROR.code') . ' - ' . $f3->get('ERROR.title') . '</h1>';
+		$content .= $f3->get('ERROR.text') . '</div>';
+//		$content .= '<p>' . $f3->get('ERROR.trace') . '</p>';
+
+        $f3->set('content', $content);
+        $f3->set('page.title','404');
+        $pageModel = new \Page\Model();
+        $f3->set('menu',$pageModel->getMainMenuPages());
+		echo \Template::instance()->render('layout/default.html');
 	}
 
 	/**
@@ -24,24 +30,26 @@ class Common {
 	 */
 	public function install()
 	{
-		$db = F3::get('DB');
-
-		if(!in_array('pages',$db->getTables())) {
+        $f3 = \Base::instance();
+		$db = $f3->get('DB');
+		$builder = new \DB\SQL\Schema($db);
+		
+		if(!in_array('pages',$builder->getTables())) {
 			// install tables
-			$db->create('pages',function($table){
-				$table->addCol('title','TEXT8');
-				$table->addCol('url_path','TEXT8');
-				$table->addCol('parent_id','INT8',false,0);
-				$table->addCol('config','TEXT16');
-				$table->addCol('lang','TEXT8',true,'en');
-				$table->addCol('visible_in_menu','BOOLEAN',false,1);
-				$table->addCol('sorting','INT16',false,0);
-				$table->addCol('hidden','BOOLEAN',false,0);
-				$table->addCol('deleted','BOOLEAN',false,0);
-			});
+            $builder->createTable('pages');
+            $builder->addColumn('title',\DB\SQL\Schema::DT_TEXT8);
+            $builder->addColumn('url_path', \DB\SQL\Schema::DT_TEXT8);
+            $builder->addColumn('parent_id', \DB\SQL\Schema::DT_INT8,true,0);
+            $builder->addColumn('config', \DB\SQL\Schema::DT_TEXT16);
+            $builder->addColumn('lang', \DB\SQL\Schema::DT_TEXT8,true,'en');
+            $builder->addColumn('visible_in_menu', \DB\SQL\Schema::DT_BOOLEAN,true,1);
+            $builder->addColumn('sorting', \DB\SQL\Schema::DT_INT16, true,0);
+            $builder->addColumn('hidden', \DB\SQL\Schema::DT_BOOLEAN, true,0);
+            $builder->addColumn('deleted', \DB\SQL\Schema::DT_BOOLEAN, true,0);
+            unset($builder);
 
 			// adding basic data
-			F3::set('pages',array(
+			$f3->set('pages',array(
 				array(
 					'title' => 'Home',
 					'url_path' => 'home',
@@ -63,20 +71,16 @@ class Common {
 					'sorting' => 4,
 				)
 			));
-			$ax = new Axon('pages');
-			var_dump(count(F3::get('pages')));
-			for($i = 0; $i<count(F3::get('pages')); $i++) {
-				$ax->copyFrom('pages.'.$i);
-				$ax->save();
-				$ax->reset();
+			$pages = new \DB\SQL\Mapper($db,'pages');
+			for($i = 0; $i<count($f3->get('pages')); $i++) {
+				$pages->copyfrom('pages.'.$i);
+				$pages->save();
+				$pages->reset();
 			}
 			echo "SUCCESS: pages table created <br>";
 
 		} else {
 			echo "pages table already created <br>";
-
-			$ax = new Axon('pages');
-			var_export($ax->afind());
 		}
 	}
 

@@ -2,8 +2,8 @@
 /**
 	FatFreeFridge - your user guide for the PHP Fat-Free Framework
 
-	The contents of this file are subject to the terms of the GNU General
-	Public License Version 3.0. You may not use this file except in
+	The contents of f3 file are subject to the terms of the GNU General
+	Public License Version 3.0. You may not use f3 file except in
 	compliance with the license. Any of the license terms and conditions
 	can be waived if you get permission from the copyright holder.
 
@@ -14,35 +14,39 @@
 		@version 0.0.1
  **/
 
-require __DIR__.'/lib/base.php';
+$f3 = require __DIR__.'/lib/base.php';
 
-class F3WIKI extends F3instance {
+// set global vars
+$f3->set('AUTOLOAD', 'inc/;app/');
+$f3->set('DEBUG', 3);
+$f3->set('TZ', 'Europe/Berlin');
 
-	public function __construct()
-	{
-		// set global vars
-		$this->set('AUTOLOAD', 'inc/;app/');
-		$this->set('DEBUG', 3);
-		$this->set('TZ', 'Europe/Berlin');
+// set paths
+$f3->set('UI', 'gui/');
+$f3->set('LOCALES', 'dict/');
+$f3->set('CACHE', FALSE);
+$f3->set('TEMP', 'temp/');
 
-		// set paths
-		$this->set('GUI', 'gui/');
-		$this->set('LOCALES', 'dict/');
-		$this->set('CACHE', FALSE);
-		$this->set('TEMP', 'temp/');
+// load DB
+$f3->set('DB',new DB\SQL('sqlite:db/sqlite2.db'));
 
-		// load DB
-		$this->set('DB',new VDB('sqlite:db/sqlite.db'));
+// some routes
+$f3->route('GET /', function($f3) {
+	$f3->reroute('/home');
+});
+$f3->route('GET /@page', '\Page\Controller->view');
+$f3->route('GET /install', '\Common->install');
 
-		// some routes
-		$this->route('GET /', function() { F3::reroute('/home'); });
-		$this->route('GET /@page', '\Page\Controller->view');
-		$this->route('GET /install', '\Common->install');
+$f3->route('GET /home2', function($f3){
+	$model = new \DB\SQL\Mapper($f3->get('DB'), 'pages');
+	$model->load(array('title=?', 'Home'));
+	var_dump($model->dry());
+	var_dump($model->get('title'));
+	var_dump($model->title);
+});
 
-		// error handler
-		$this->set('ONERROR','\Common->error');
-	}
-}
 
-$f3fridge = new F3WIKI();
-$f3fridge->run();
+$f3->set('ONERROR','\Common->error');
+
+
+$f3->run();
