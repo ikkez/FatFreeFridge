@@ -1,5 +1,3 @@
-### FatFreeFridge
+### FatFreeFridge is over.
 
-your community-driven user guide for the PHP Fat-Free Framework
-
-view project page at http://www.fatfreefridge.net
+The API docs will be rewritten for version 3 and can be found on http://www.fatfreeframework.com
